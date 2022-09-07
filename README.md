@@ -87,7 +87,7 @@ Where's Waldo game that uses React for frontend and Firebase for backend.
 
 ### Purpose
 
-The purpose of this project is to gain experience working this backend as a service(BaaS).
+The purpose of this project is to gain experience working with backend as a service(BaaS).
 
 <!-- ROADMAP -->
 
