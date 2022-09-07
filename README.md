@@ -130,7 +130,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Licenses
 
-- Distributed under the MIT License. See `LICENSE.txt` for more information.
+- Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -165,7 +165,7 @@ Project Link: [https://github.com/palmerusaf/waldo](https://github.com/palmerusa
 [issues-shield]: https://img.shields.io/github/issues/palmerusaf/waldo.svg?style=for-the-badge
 [issues-url]: https://github.com/palmerusaf/waldo/issues
 [license-shield]: https://img.shields.io/github/license/palmerusaf/waldo.svg?style=for-the-badge
-[license-url]: https://github.com/palmerusaf/waldo/blob/master/LICENSE.txt
+[license-url]: https://github.com/palmerusaf/waldo/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/branden-palmer-968765120
 [product-screenshot]: ./src/imgs/screen-shot.png
