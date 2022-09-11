@@ -1,5 +1,12 @@
+import { Link } from "react-router-dom";
+
 function App() {
-  return <div>Test</div>;
+  return (
+    <>
+      <h1>main screen</h1>
+      <Link to="/game">Game Screen</Link>
+    </>
+  );
 }
 
 export default App;
