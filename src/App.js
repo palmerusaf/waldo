@@ -7,7 +7,7 @@ function App() {
       <h2>Directions</h2>
       <p>
         Find all the characters in the picture, then check the high score page
-        to see where you rank up.
+        to see where you rank at.
       </p>
       <ul>
         <li>
