@@ -1,16 +1,22 @@
 export default function Characters(props) {
-  const characterList = ["waldo", "winda", "wizard", "woof", "odlaw"];
+  const { characterList, CharacterItem } = props;
 
   return (
     <ul>
       {characterList.map((char) => {
+        const charImg = (
+          <img
+            src={require("../imgs/characters/" + char.name + ".png")}
+            alt={char}
+          />
+        );
         return (
-          <li onClick={props.handleClick} key={char}>
-            <img
-              src={require("../imgs/characters/" + char + ".png")}
-              alt={char}
-            />
-          </li>
+          <CharacterItem
+            charImg={charImg}
+            name={char.name}
+            isFound={char.isFound}
+            key={char.name}
+          />
         );
       })}
     </ul>
