@@ -16,8 +16,12 @@ export default function Game() {
     { name: "odlaw", isFound: false },
   ]);
 
-  const setCharacterFound = (name) => {
-    console.log("name :>> ", name);
+  const setCharacterFound = (pName) => {
+    setCharacterList(
+      characterList.map((char) => {
+        return char.name === pName ? { ...char, isFound: true } : char;
+      })
+    );
   };
 
   const CharacterBar = (props) => (

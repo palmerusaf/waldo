@@ -11,7 +11,7 @@ export default function Characters(props) {
         const charImg = (
           <img
             src={require("../imgs/characters/" + char.name + ".png")}
-            alt={char}
+            alt={char.name}
           />
         );
         return (
