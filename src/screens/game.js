@@ -26,7 +26,7 @@ export default function Game() {
   );
 
   const TargetList = (props) => (
-    <Characters characterList={characterList} CharacterItem={TargetListItem} />
+    <Characters characterList={characterList} updateCharacterList={updateCharacterList} CharacterItem={TargetListItem} />
   );
 
   return (

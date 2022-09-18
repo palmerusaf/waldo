@@ -16,6 +16,7 @@ export default function Characters(props) {
             name={char.name}
             isFound={char.isFound}
             key={char.name}
+            updateCharacterList={props.updateCharacterList || null}
           />
         );
       })}

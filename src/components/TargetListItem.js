@@ -1,9 +1,13 @@
 export default function TargetListItem(props) {
   if (props.isFound) return;
-  const { charImg, name } = props;
+  const { charImg, name, updateCharacterList } = props;
   return (
     <li>
-      <figure>
+      <figure
+        onClick={() => {
+          updateCharacterList(name);
+        }}
+      >
         {charImg}
         <figcaption>{name}</figcaption>
       </figure>
