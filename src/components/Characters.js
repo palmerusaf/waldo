@@ -1,5 +1,9 @@
+import React from "react";
+import { CharacterContext } from "../screens/game";
+
 export default function Characters(props) {
-  const { characterList, CharacterItem } = props;
+  const { CharacterItem } = props;
+  const { characterList } = React.useContext(CharacterContext);
 
   return (
     <ul>
@@ -16,7 +20,7 @@ export default function Characters(props) {
             name={char.name}
             isFound={char.isFound}
             key={char.name}
-            updateCharacterList={props.updateCharacterList || null}
+            setCharacterFound={props.setCharacterFound || null}
           />
         );
       })}

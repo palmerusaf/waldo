@@ -5,6 +5,8 @@ import GameCanvas from "../components/GameCanvas.js";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
+export const CharacterContext = React.createContext();
+
 export default function Game() {
   const [characterList, setCharacterList] = useState([
     { name: "waldo", isFound: false },
@@ -14,27 +16,23 @@ export default function Game() {
     { name: "odlaw", isFound: false },
   ]);
 
-  const updateCharacterList = (name) => {
+  const setCharacterFound = (name) => {
     console.log("name :>> ", name);
   };
 
   const CharacterBar = (props) => (
-    <Characters
-      characterList={characterList}
-      CharacterItem={CharacterBarItem}
-    />
+    <Characters CharacterItem={CharacterBarItem} />
   );
 
-  const TargetList = (props) => (
-    <Characters characterList={characterList} updateCharacterList={updateCharacterList} CharacterItem={TargetListItem} />
-  );
+  const TargetList = (props) => <Characters CharacterItem={TargetListItem} />;
 
   return (
     <div className="screen-container">
-      <CharacterBar />
-      <GameCanvas />
-      <TargetList />
-      <Link to="/highscores">High Scores</Link>
+      <CharacterContext.Provider value={{ characterList, setCharacterFound }}>
+        <CharacterBar />
+        <GameCanvas />
+        <TargetList />
+      </CharacterContext.Provider>
     </div>
   );
 }
