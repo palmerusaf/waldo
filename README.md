@@ -80,7 +80,7 @@ Where's Waldo game that uses React for frontend and Firebase for backend.
 - [React.js](https://reactjs.org/)
 - [Jest](https://jestjs.io/)
 - [Firebase](https://firebase.google.com/)
-- [Sass](https://sass-lang.com/)
+- [tailwindcss](https://tailwindcss.com/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/api/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
