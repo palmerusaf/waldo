@@ -1,8 +1,9 @@
 import { CharacterContext } from "../screens/game";
+import { useCharacterContext } from "../contexts/CharacterContext";
 import React from "react";
 
 export default function TargetListItem(props) {
-  const { setCharacterFound } = React.useContext(CharacterContext);
+  const { setCharacterFound } = useCharacterContext();
   if (props.isFound) return;
   const { charImg, name } = props;
   return (

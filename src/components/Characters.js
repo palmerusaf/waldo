@@ -1,9 +1,9 @@
 import React from "react";
-import { CharacterContext } from "../screens/game";
+import { useCharacterContext } from "../contexts/CharacterContext";
 
 export default function Characters(props) {
   const { CharacterItem } = props;
-  const { characterList } = React.useContext(CharacterContext);
+  const { characterList } = useCharacterContext();
 
   return (
     <ul>
