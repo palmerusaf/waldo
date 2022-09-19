@@ -1,19 +1,18 @@
-import "../styles/footer.scss";
 import GitHubLogo from "../imgs/github-logo.png";
 
 export default function Footer(props) {
-  const { color, link } = props;
+  const { link } = props;
 
   return (
-    <footer className="footer" style={{ backgroundColor: `${color}` }}>
+    <footer className="bg-black text-white flex justify-center p-1">
       <a
+        className="flex space-x-2"
         href={"https://github.com/palmerusaf/" + link}
         target="_blank"
-        className="footer__content"
         rel="noreferrer"
       >
-        <p className="footer__text">GitHub Repo</p>
-        <img className="footer__img" src={GitHubLogo} alt="GitHub Logo" />
+        <p className="padding">GitHub Repo</p>
+        <img className="h-6" src={GitHubLogo} alt="GitHub Logo" />
       </a>
     </footer>
   );

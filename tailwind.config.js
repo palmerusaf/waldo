@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        "1fr-auto": "1fr, auto",
+      },
+    },
   },
   plugins: [],
 };
