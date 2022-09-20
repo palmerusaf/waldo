@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import ScreenContainer from "./components/ScreenContainer.js";
 
 function App() {
   return (
-    <>
+    <ScreenContainer className="">
       <h1>Where's Waldo</h1>
       <h2>Directions</h2>
       <p>
@@ -17,7 +18,7 @@ function App() {
           <Link to="/highscores">High Scores</Link>
         </li>
       </ul>
-    </>
+    </ScreenContainer>
   );
 }
 
