@@ -8,11 +8,7 @@ function App() {
   return (
     <ScreenContainer className="bg-gray-800">
       <Title></Title>
-      <Directions>
-        <Link to="/game">
-          <Button className="m-10">Start Game</Button>
-        </Link>
-      </Directions>
+      <Directions />
     </ScreenContainer>
   );
 }
