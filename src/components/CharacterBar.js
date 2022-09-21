@@ -1,6 +1,7 @@
 import { useCharacterContext } from "../contexts/CharacterContext";
-import GreenCheckMark from "../components/GreenCheckMark.js";
-import CharacterImg from "../components/CharacterImg.js";
+import GreenCheckMark from "./GreenCheckMark.js";
+import CharacterImg from "./CharacterImg.js";
+import DisplayBox from "./DisplayBox.js";
 import styled from "styled-components";
 
 const GrayTransparent = styled.div`
@@ -12,13 +13,10 @@ export default function CharacterBar() {
 
   const CharacterItem = ({ name, isFound }) => {
     return (
-      <li
-        key={name}
-        className="flex items-center justify-center relative w-100 border-2 border-solid border-red-900"
-      >
+      <li key={name} className="flex items-center justify-center relative">
         <CharacterImg name={name} />
         {isFound && (
-          <GrayTransparent className="absolute flex h-full w-full items-center">
+          <GrayTransparent className="rounded-xl absolute flex h-full w-full items-center">
             <GreenCheckMark />
           </GrayTransparent>
         )}
@@ -26,12 +24,11 @@ export default function CharacterBar() {
     );
   };
 
-  return (
-    <div>
-      <h1>Characters</h1>
-      <ul className="grid grid-cols-5 grid-rows-1">
-        {characterList.map(CharacterItem)}
-      </ul>
-    </div>
+  const content = (
+    <ul className="grid grid-cols-5 grid-rows-1 gap-3 mt-1">
+      {characterList.map(CharacterItem)}
+    </ul>
   );
+
+  return <DisplayBox heading="Characters" content={content}></DisplayBox>;
 }

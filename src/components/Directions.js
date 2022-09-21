@@ -1,16 +1,18 @@
-import DisplayBox from "../components/DisplayBox.js";
-import PageButton from "../components/PageButton.js";
+import DisplayBox from "./DisplayBox.js";
+import PageButton from "./PageButton.js";
+import Heading from "./Heading";
+import MonoContent from "./MonoContent";
 
-export default function Directions({ children }) {
-  const content = (
-    <p className="p-10 text-xl font-mono">
-      Find all the characters in the picture, then check the high score page to
-      see where you rank at.
-    </p>
-  );
-
+export default function Directions() {
   return (
-    <DisplayBox heading="Directions" content={content}>
+    <DisplayBox>
+      <Heading>Directions</Heading>
+      <div className="p-6">
+        <MonoContent>
+          Find all the characters in the picture, then check the high score page
+          to see where you rank at.
+        </MonoContent>
+      </div>
       <PageButton page="/game">Start Game</PageButton>
     </DisplayBox>
   );
