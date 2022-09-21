@@ -11,7 +11,6 @@ export default function Game() {
       <CharacterProvider>
         <CharacterBar />
         <GameCanvas />
-        <TargetList />
       </CharacterProvider>
     </ScreenContainer>
   );

@@ -3,17 +3,12 @@ import CharacterImg from "./CharacterImg.js";
 import FoundOverlay from "./FoundOverlay.js";
 import DisplayBox from "./DisplayBox.js";
 import Heading from "./Heading";
-import button from "./Button";
 import { useState } from "react";
 
 export default function CharacterBar() {
   const { characterList } = useCharacterContext();
 
   const [showCharacters, setShowCharacters] = useState(true);
-
-  const toggleCharacters = () => {
-    setShowCharacters(!showCharacters);
-  };
 
   const CharacterItem = ({ name, isFound }) => {
     if (!showCharacters) return;
@@ -31,7 +26,7 @@ export default function CharacterBar() {
         <div className="relative">
           <Heading>Characters</Heading>
           <button
-            onClick={toggleCharacters}
+            onClick={() => setShowCharacters(!showCharacters)}
             className="bg-gray-700 px-2 rounded absolute top-1 right-3 text-gray-100 border border-yellow-400 hover:scale-105"
           >
             {showCharacters ? "Hide" : "Show"}

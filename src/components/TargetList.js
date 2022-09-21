@@ -13,14 +13,14 @@ export default function TargetList() {
     return (
       !isFound && (
         <li onClick={handleClick} key={name}>
-          <figure>
-            <CharacterImg name={name} />
-            <figcaption>{name}</figcaption>
+          <figure className="grid grid-cols-2 items-center justify-center">
+            <CharacterImg name={name} className='max-h-10 bg-gray-400 px-1 rounded-xl text-center' />
+            <figcaption className="capitalize bg-gray-400 px-1 rounded-xl text-center">{name}</figcaption>
           </figure>
         </li>
       )
     );
   };
 
-  return <ul className="flex">{characterList.map(TargetItem)}</ul>;
+  return <ul className="grid grid-rows-5 items-center max-h-full absolute">{characterList.map(TargetItem)}</ul>;
 }
