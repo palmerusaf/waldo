@@ -5,7 +5,7 @@ import MagGlass from "../imgs/mag-glass.png";
 const TargetingContainer = styled.div`
   position: absolute;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1.5fr 3fr;
   top: ${(props) => props.x}%;
   left: ${(props) => props.y}%;
 `;

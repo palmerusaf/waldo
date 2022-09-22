@@ -1,5 +1,6 @@
 import { useCharacterContext } from "../contexts/CharacterContext";
 import CharacterImg from "../components/CharacterImg.js";
+import styled from "styled-components";
 
 export default function TargetList({ className }) {
   const { characterList, setCharacterFound } = useCharacterContext();
@@ -10,15 +11,20 @@ export default function TargetList({ className }) {
       setCharacterFound(name);
     };
 
+    const LI = styled.li`
+      background-color: rgba(156, 163, 175, 0.6);
+      border-width: 1px;
+    `;
+
     return (
       !isFound && (
-        <li
+        <LI
           onClick={handleClick}
           key={name}
-          className="grid content-center border-solid border-red-600 border-2 m-px bg-gray-400 py-0.5 rounded-full"
+          className="grid content-center border-solid border-red-600 border-2 m-px py-0.5 rounded-full"
         >
           <CharacterImg name={name} />
-        </li>
+        </LI>
       )
     );
   };
