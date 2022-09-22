@@ -4,9 +4,12 @@ import TargetingDisplay from "./TargetingDisplay";
 import React, { useState } from "react";
 
 export default function GameCanvas() {
-  const handleClick = (click) => {
-    const { x, y } = getRelativeClickPosition(click);
-    setCoordinates({ x, y });
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+    const position = getRelativeClickPosition(e);
+    console.log('position :>> ', position);
+    setCoordinates(position);
   };
 
   const [isFocused, setIsFocused] = useState(false);
@@ -18,18 +21,14 @@ export default function GameCanvas() {
   const [coordinates, setCoordinates] = useState({ x: null, y: null });
 
   return (
-    <>
-      <button
-        className="flex relative"
-        onFocus={toggleIsFocused}
-        onBlur={toggleIsFocused}
-        onClick={handleClick}
-      >
-        <img src={Canvas} alt="Waldo Canvas" />
-        {isFocused && <TargetingDisplay />}
-      </button>
-      <div className="text-white">x: {coordinates.x}</div>
-      <div className="text-white">y: {coordinates.y}</div>
-    </>
+    <button
+      className="flex relative"
+      onFocus={toggleIsFocused}
+      onBlur={toggleIsFocused}
+      onClick={handleClick}
+    >
+      <img src={Canvas} alt="Waldo Canvas" />
+      {isFocused && <TargetingDisplay />}
+    </button>
   );
 }
