@@ -1,6 +1,6 @@
 import Canvas from "../imgs/waldo-canvas.jpg";
 import { getRelativeClickPosition } from "../utils/TargetingUtils.js";
-import TargetList from "./TargetList";
+import TargetingDisplay from "./TargetingDisplay";
 
 export default function GameCanvas() {
   const handleClick = (click) => {
@@ -10,7 +10,7 @@ export default function GameCanvas() {
   return (
     <div className="flex relative" onClick={handleClick}>
       <img onClick={handleClick} src={Canvas} alt="Waldo Canvas" />
-      <TargetList></TargetList>
+      <TargetingDisplay></TargetingDisplay>
     </div>
   );
 }

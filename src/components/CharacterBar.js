@@ -10,32 +10,38 @@ export default function CharacterBar() {
 
   const [showCharacters, setShowCharacters] = useState(true);
 
+  const Caption = (props) => (
+    <DisplayBox className="bg-gray-400 min-w-fit p-0.5 py-0.5 -rotate-12 capitalize text-xl bottom-2 w-full absolute">
+      <figcaption className="text-sm">{props.name}</figcaption>
+    </DisplayBox>
+  );
+
   const CharacterItem = ({ name, isFound }) => {
     if (!showCharacters) return;
     return (
       <li key={name} className="flex items-center justify-center relative p-1">
-        <CharacterImg name={name} />
+        <figure>
+          <CharacterImg name={name} />
+        </figure>
+        <Caption name={name} />
         {isFound && <FoundOverlay />}
       </li>
     );
   };
 
   return (
-    <div className="my-3">
-      <DisplayBox>
-        <div className="relative">
-          <Heading>Characters</Heading>
-          <button
-            onClick={() => setShowCharacters(!showCharacters)}
-            className="bg-gray-700 px-2 rounded absolute top-1 right-3 text-gray-100 border border-yellow-400 hover:scale-105"
-          >
-            {showCharacters ? "Hide" : "Show"}
-          </button>
-        </div>
-        <ul className="grid grid-cols-5 grid-rows-1 gap-3 mt-1 mx-3">
-          {characterList.map(CharacterItem)}
-        </ul>
-      </DisplayBox>
-    </div>
+    <DisplayBox className="my-3">
+      <Heading className={"relative"}>Characters</Heading>
+      <button
+        onClick={() => setShowCharacters(!showCharacters)}
+        className="bg-gray-700 px-2 rounded absolute top-6 right-7 text-gray-100 border border-yellow-400 hover:scale-105"
+      >
+        {showCharacters ? "Hide" : "Show"}
+      </button>
+
+      <ul className="grid grid-cols-5 grid-rows-1 gap-3 mt-1 mx-3">
+        {characterList.map(CharacterItem)}
+      </ul>
+    </DisplayBox>
   );
 }

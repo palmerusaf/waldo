@@ -3,7 +3,7 @@ export default function DisplayBox({ children, className }) {
   return (
     <div
       className={
-        " bg-gray-500 py-5 mx-4 rounded-2xl text-center" + border + className
+        " bg-gray-500 py-1 mx-4 rounded-2xl text-center" + border + className
       }
     >
       {children}

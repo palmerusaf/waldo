@@ -1,3 +1,3 @@
-export default function Heading({ children }) {
-  return <h2 className="font-bold text-2xl">{children}</h2>;
+export default function Heading({ children, className }) {
+  return <h2 className={"font-bold text-2xl " + className}>{children}</h2>;
 }
