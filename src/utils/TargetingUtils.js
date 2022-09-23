@@ -1,9 +1,12 @@
+const formatAsInteger = (percent) => Math.floor(percent * 100);
+
 export const getRelativeClickPosition = (click) => {
-  const { clientX, clientY } = click;
   const target = document.getElementById("canvas");
-  let [x, y] = [
-    (clientX - target.offsetLeft) / target.clientWidth,
-    (clientY - target.offsetTop) / target.clientHeight,
-  ];
-  return { x, y };
+  const inTargetX = click.clientX - target.offsetLeft;
+  const inTargetY = click.clientY - target.offsetTop;
+
+  return {
+    x: formatAsInteger(inTargetX / target.clientWidth),
+    y: formatAsInteger(inTargetY / target.clientHeight),
+  };
 };
