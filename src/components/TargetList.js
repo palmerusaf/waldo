@@ -3,8 +3,12 @@ import CharacterImg from "../components/CharacterImg.js";
 import styled from "styled-components";
 
 const LI = styled.li`
-  background-color: rgba(156, 163, 175, 0.6);
+  background-color: rgba(103, 225, 225, 0.4);
   border-width: 1px;
+  border-left-color: rgb(255, 255, 102);
+  border-top-color: rgb(255, 255, 102);
+  border-bottom-color: rgb(223, 194, 2);
+  border-right-color: rgb(223, 194, 2);
 `;
 
 export default function TargetList({ className }) {
@@ -21,7 +25,7 @@ export default function TargetList({ className }) {
         <LI
           onClick={handleClick}
           key={name}
-          className="grid content-center border-solid border-red-600 border-2 m-px py-0.5 rounded-full"
+          className="grid content-center border-solid borderyellow-400 border-2 m-px py-0.5 rounded-full"
         >
           <CharacterImg name={name} />
         </LI>
