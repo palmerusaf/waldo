@@ -24,8 +24,13 @@ export function TimerProvider({ children }) {
     timerRunning = false;
   };
 
+  const resetTimer = () => {
+    if (timerRunning) stopTimer();
+    setTimer(0);
+  };
+
   return (
-    <TimerContext.Provider value={{ timer, startTimer, stopTimer }}>
+    <TimerContext.Provider value={{ timer, startTimer, stopTimer, resetTimer }}>
       {children}
     </TimerContext.Provider>
   );
