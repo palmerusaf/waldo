@@ -5,17 +5,20 @@ import App from "./App";
 import Game from "./screens/game.js";
 import HighScores from "./screens/HighScores.js";
 import FooterWrapper from "./components/FooterWrapper.js";
+import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <FooterWrapper>
-      <Routes>
-        <Route path="waldo" element={<App />} />
-        <Route path="game" element={<Game />} />
-        <Route path="highscores" element={<HighScores />} />
-      </Routes>
-    </FooterWrapper>
+    <TimerProvider>
+      <FooterWrapper>
+        <Routes>
+          <Route path="waldo" element={<App />} />
+          <Route path="game" element={<Game />} />
+          <Route path="highscores" element={<HighScores />} />
+        </Routes>
+      </FooterWrapper>
+    </TimerProvider>
   </BrowserRouter>
 );

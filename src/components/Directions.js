@@ -2,8 +2,10 @@ import DisplayBox from "./DisplayBox.js";
 import PageButton from "./PageButton.js";
 import Heading from "./Heading";
 import MonoContent from "./MonoContent";
+import { useTimerContext } from "../contexts/TimerContext";
 
 export default function Directions() {
+  const { startTimer } = useTimerContext();
   return (
     <DisplayBox>
       <Heading>Directions</Heading>
@@ -13,7 +15,9 @@ export default function Directions() {
           to see where you rank at.
         </MonoContent>
       </div>
-      <PageButton page="/game">Start Game</PageButton>
+      <PageButton onClick={startTimer} page="/game">
+        Start Game
+      </PageButton>
     </DisplayBox>
   );
 }
