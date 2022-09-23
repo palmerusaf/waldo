@@ -28,7 +28,7 @@ export default function GameCanvas() {
       id="canvas"
     >
       <img src={Canvas} alt="Waldo Canvas" />
-      {isFocused && <TargetingDisplay />}
+      {isFocused && <TargetingDisplay coordinates={coordinates} />}
     </button>
   );
 }

@@ -6,13 +6,16 @@ const TargetingContainer = styled.div`
   position: absolute;
   display: grid;
   grid-template-columns: 1.5fr 3fr;
-  top: ${(props) => props.x}%;
-  left: ${(props) => props.y}%;
+  top: ${(props) => props.coordinates.y-5}%;
+  left: ${(props) => props.coordinates.x-2.5}%;
 `;
 
 export default function TargetingDisplay(props) {
   return (
-    <TargetingContainer x={props.x} y={props.y} className="h-1/5 w-1/3 ">
+    <TargetingContainer
+      coordinates={props.coordinates}
+      className="h-1/5 w-1/3 "
+    >
       <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
       <TargetList className="" />
     </TargetingContainer>
