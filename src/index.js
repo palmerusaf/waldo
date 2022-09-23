@@ -7,18 +7,21 @@ import HighScores from "./screens/HighScores.js";
 import FooterWrapper from "./components/FooterWrapper.js";
 import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
+import { CharacterProvider } from "./contexts/CharacterContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <TimerProvider>
-      <FooterWrapper>
-        <Routes>
-          <Route path="waldo" element={<App />} />
-          <Route path="game" element={<Game />} />
-          <Route path="highscores" element={<HighScores />} />
-        </Routes>
-      </FooterWrapper>
-    </TimerProvider>
+    <CharacterProvider>
+      <TimerProvider>
+        <FooterWrapper>
+          <Routes>
+            <Route path="waldo" element={<App />} />
+            <Route path="game" element={<Game />} />
+            <Route path="highscores" element={<HighScores />} />
+          </Routes>
+        </FooterWrapper>
+      </TimerProvider>
+    </CharacterProvider>
   </BrowserRouter>
 );
