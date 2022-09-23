@@ -8,7 +8,6 @@ export default function GameCanvas() {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     const position = getRelativeClickPosition(e);
-    console.log('position :>> ', position);
     setCoordinates(position);
   };
 
@@ -26,6 +25,7 @@ export default function GameCanvas() {
       onFocus={toggleIsFocused}
       onBlur={toggleIsFocused}
       onClick={handleClick}
+      id="canvas"
     >
       <img src={Canvas} alt="Waldo Canvas" />
       {isFocused && <TargetingDisplay />}
