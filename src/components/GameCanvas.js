@@ -5,8 +5,11 @@ import React, { useState } from "react";
 
 export default function GameCanvas() {
   const handleClick = (e) => {
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
+    const nonTargetingClick = !(
+      e.target.alt === "Waldo Canvas" || e.target.alt === "Magnifying Glass"
+    );
+
+    if (nonTargetingClick) return;
     const position = getRelativeClickPosition(e);
     setCoordinates(position);
   };
