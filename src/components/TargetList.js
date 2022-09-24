@@ -4,11 +4,17 @@ import styled from "styled-components";
 
 const LI = styled.li`
   background-color: rgba(103, 225, 225, 0.4);
-  border-width: 1px;
-  border-left-color: rgb(255, 255, 102);
-  border-top-color: rgb(255, 255, 102);
-  border-bottom-color: rgb(223, 194, 2);
-  border-right-color: rgb(223, 194, 2);
+  border-width: 2px;
+  border-color: #ffff66 #dfc202 #dfc202 #ffff66;
+  @keyframes popIn {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  animation: popIn 300ms;
 `;
 
 export default function TargetList({ className }) {
