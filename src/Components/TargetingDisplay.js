@@ -17,7 +17,7 @@ export default function TargetingDisplay(props) {
       className="h-1/5 w-1/3 "
     >
       <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
-      <TargetList className="" />
+      <TargetList />
     </TargetingContainer>
   );
 }

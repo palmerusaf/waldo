@@ -8,20 +8,23 @@ import FooterWrapper from "./Components/FooterWrapper.js";
 import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 import { CharacterProvider } from "./contexts/CharacterContext";
+import { GameCompleteProvider } from "./contexts/GameCompleteContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <CharacterProvider>
-      <TimerProvider>
-        <FooterWrapper>
-          <Routes>
-            <Route path="waldo" element={<App />} />
-            <Route path="game" element={<Game />} />
-            <Route path="highscores" element={<HighScores />} />
-          </Routes>
-        </FooterWrapper>
-      </TimerProvider>
-    </CharacterProvider>
+    <GameCompleteProvider>
+      <CharacterProvider>
+        <TimerProvider>
+          <FooterWrapper>
+            <Routes>
+              <Route path="waldo" element={<App />} />
+              <Route path="game" element={<Game />} />
+              <Route path="highscores" element={<HighScores />} />
+            </Routes>
+          </FooterWrapper>
+        </TimerProvider>
+      </CharacterProvider>
+    </GameCompleteProvider>
   </BrowserRouter>
 );
