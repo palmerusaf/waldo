@@ -3,6 +3,7 @@ import CharacterImg from "./CharacterImg.js";
 import FoundOverlay from "./FoundOverlay.js";
 import DisplayBox from "./DisplayBox.js";
 import Heading from "./Heading";
+import SecondButton from "./SecondButton.js";
 import { useState } from "react";
 
 export default function CharacterBar() {
@@ -32,12 +33,12 @@ export default function CharacterBar() {
   return (
     <DisplayBox className="my-3">
       <Heading className={"relative"}>Characters</Heading>
-      <button
+      <SecondButton
         onClick={() => setShowCharacters(!showCharacters)}
-        className="bg-gray-700 px-2 rounded absolute top-6 right-7 text-gray-100 border border-yellow-400 hover:scale-105"
+        className="absolute top-6 right-7"
       >
         {showCharacters ? "Hide" : "Show"}
-      </button>
+      </SecondButton>
 
       <ul className="grid grid-cols-5 grid-rows-1 gap-3 mt-1 mx-3">
         {characterList.map(CharacterItem)}
