@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 const Wrap = styled.div`
   display: grid;

@@ -7,11 +7,11 @@ export default function CompletionPopup(props) {
   const [name, setName] = useState(null);
   return (
     <div className="absolute h-full w-full grid justify-center items-center">
-      <DisplayBox className='px-2'>
+      <DisplayBox className="px-2">
         <Heading className="p-0 m-0">Congratulations!</Heading>
         <p>You have found all the characters.</p>
         <p>Please enter your name below to find out where you rank.</p>
-        {!name && (
+        {!name ? (
           <form className="flex justify-center gap-2">
             <label htmlFor="name" className="font-bold">
               Name:
@@ -31,6 +31,8 @@ export default function CompletionPopup(props) {
               Submit
             </SecondButton>
           </form>
+        ) : (
+          ""
         )}
       </DisplayBox>
     </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ScreenContainer from "../components/ScreenContainer";
-import GameCanvas from "../components/GameCanvas.js";
-import CharacterBar from "../components/CharacterBar.js";
-import Timer from "../components/Timer";
-import CompletionPopup from '../components/CompletionPopup.js';
+import ScreenContainer from "../Components/ScreenContainer";
+import GameCanvas from "../Components/GameCanvas.js";
+import CharacterBar from "../Components/CharacterBar.js";
+import Timer from "../Components/Timer";
+import CompletionPopup from "../Components/CompletionPopup.js";
 
 export default function Game() {
   const [gameComplete, setGameComplete] = useState(true);

@@ -1,6 +1,6 @@
-import ScreenContainer from "./components/ScreenContainer.js";
-import Title from "./components/Title.js";
-import Directions from "./components/Directions.js";
+import ScreenContainer from "./Components/ScreenContainer.js";
+import Title from "./Components/Title.js";
+import Directions from "./Components/Directions.js";
 
 function App() {
   return (
