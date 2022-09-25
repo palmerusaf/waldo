@@ -1,16 +1,19 @@
+import { useTimerContext } from "../contexts/TimerContext";
 export default function PlayerRank(props) {
-    const {name} = props;
+  const { name } = props;
+  const { timer } = useTimerContext();
+
+  const RankItem = (props) => (
+    <span className="font-bold">
+      {props.label}: <span className="font-normal">{props.children}</span>
+    </span>
+  );
+
   return (
     <div className="flex justify-center gap-2">
-      <span className="font-bold">
-        Rank: <span className="font-normal">{name}</span>
-      </span>
-      <span className="font-bold">
-        Name: <span className="font-normal">{name}</span>
-      </span>
-      <span className="font-bold">
-        Time: <span className="font-normal">{name}</span>
-      </span>
+      <RankItem label="Name">{name}</RankItem>
+      <RankItem label="Timer">{timer}</RankItem>
+      <RankItem label="Rank">TODO getRank</RankItem>
     </div>
   );
 }

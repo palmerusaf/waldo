@@ -5,7 +5,7 @@ import DisplayBox from "./DisplayBox";
 export default function Timer() {
   const { timer } = useTimerContext();
   return (
-    <DisplayBox className={"self-center mt-3 py-0 px-2 font-bold font-mono"}>
+    <DisplayBox className={"self-center m-4 py-0 px-2 font-bold font-mono"}>
       TIMER: {timer}
     </DisplayBox>
   );
