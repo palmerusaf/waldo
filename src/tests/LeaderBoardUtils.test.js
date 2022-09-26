@@ -85,7 +85,7 @@ describe("filterData Tests", () => {
     { name: "waldo13", time: 4 },
   ];
   it("Works with no data points", () => {
-    expect(filterData({})).toEqual({});
+    expect(filterData([])).toEqual([]);
   });
   it("Works with one data point", () => {
     expect(filterData(oneDataPoint)).toEqual(oneDataPoint);
@@ -170,7 +170,7 @@ describe("padData Tests", () => {
     { name: "waldo9", time: 100 },
   ];
   it("Works with no data points", () => {
-    expect(padData({})).toEqual(noDataPointsPadded);
+    expect(padData([])).toEqual(noDataPointsPadded);
   });
   it("Works with one data point", () => {
     expect(padData(oneDataPoint)).toEqual(oneDataPointPadded);
