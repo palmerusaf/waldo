@@ -20,7 +20,7 @@ export default function CompletionPopup() {
         ) : (
           <>
             <PlayerRank className="pb-2" />
-            <PageButton page={"/Leaderboard"}>View Leaderboard</PageButton>
+            <PageButton page={"/leaderboard"}>View Leaderboard</PageButton>
           </>
         )}
       </DisplayBox>

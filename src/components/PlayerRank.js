@@ -13,12 +13,12 @@ export default function PlayerRank(props) {
   );
 
   return (
-    <div className="grid">
+    <div className={"grid " + props.className}>
       <Heading>Your Stats</Heading>
-      <div className={"flex justify-center gap-2 " + props.className}>
+      <div className={"grid grid-cols-3"}>
+        <RankItem label="Rank">TODO</RankItem>
         <RankItem label="Name">{playerName}</RankItem>
         <RankItem label="Time">{timer}</RankItem>
-        <RankItem label="Rank">TODO getRank</RankItem>
       </div>
     </div>
   );
