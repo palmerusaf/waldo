@@ -1,4 +1,4 @@
-import { filterData, padData } from "../utils/LeaderBoardUtils.js";
+import { trimData, filterData, padData } from "../utils/LeaderBoardUtils.js";
 
 const oneDataPoint = [{ name: "waldo", time: 40 }];
 const twoDataPointsFiltered = [
@@ -39,6 +39,9 @@ const overTenDataPointsFiltered = [
   { name: "waldo1", time: 30 },
   { name: "waldo3", time: 40 },
   { name: "waldo7", time: 60 },
+  { name: "waldo6", time: 70 },
+  { name: "waldo2", time: 80 },
+  { name: "waldo9", time: 100 },
 ];
 
 describe("filterData Tests", () => {
@@ -101,7 +104,7 @@ describe("filterData Tests", () => {
   it("Works with exactly ten data points", () => {
     expect(filterData(tenDataPointsUnfiltered)).toEqual(tenDataPointsFiltered);
   });
-  it("Work with over ten data points by truncation", () => {
+  it("Work with over ten data points", () => {
     expect(filterData(overTenDataPointsUnfiltered)).toEqual(
       overTenDataPointsFiltered
     );
@@ -183,5 +186,19 @@ describe("padData Tests", () => {
   });
   it("Works with exactly ten data points", () => {
     expect(padData(tenDataPoints)).toEqual(tenDataPointsFiltered);
+  });
+});
+
+describe("trimData Tests", () => {
+  it("Works with under ten data points", () => {
+    expect(trimData(nineDataPointsFiltered).length).toEqual(
+      nineDataPointsFiltered.length
+    );
+  });
+  it("Works with exactly ten data points", () => {
+    expect(trimData(tenDataPointsFiltered).length).toEqual(10);
+  });
+  it("Works with over ten data points", () => {
+    expect(trimData(overTenDataPointsFiltered).length).toEqual(10);
   });
 });

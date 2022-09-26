@@ -1,6 +1,10 @@
 export const filterData = (data) => {
   if (data.length === 0) return data;
   data.sort((firstItem, secondItem) => firstItem.time - secondItem.time);
+  return data;
+};
+
+export const trimData = (data) => {
   if (data.length > 10) data = data.slice(0, 10);
   return data;
 };
