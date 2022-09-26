@@ -9,7 +9,6 @@ export function CharacterProvider({ children }) {
     { name: "waldo", isFound: false },
     { name: "winda", isFound: false },
     { name: "wizard", isFound: false },
-    { name: "woof", isFound: false },
     { name: "odlaw", isFound: false },
   ]);
 

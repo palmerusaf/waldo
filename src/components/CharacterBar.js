@@ -40,7 +40,7 @@ export default function CharacterBar() {
         {showCharacters ? "Hide" : "Show"}
       </SecondButton>
 
-      <ul className="grid grid-cols-5 grid-rows-1 gap-3 mt-1 mx-3">
+      <ul className="grid grid-cols-4 grid-rows-1 gap-3 mt-1 mx-3">
         {characterList.map(CharacterItem)}
       </ul>
     </DisplayBox>

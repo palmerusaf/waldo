@@ -40,7 +40,7 @@ export default function TargetList({ className }) {
   };
 
   return (
-    <ul className={"grid grid-cols-5 max-h-full " + className}>
+    <ul className={"grid grid-cols-4 max-h-full " + className}>
       {characterList.map(TargetItem)}
     </ul>
   );
