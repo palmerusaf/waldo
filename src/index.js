@@ -9,22 +9,30 @@ import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 import { CharacterProvider } from "./contexts/CharacterContext";
 import { GameCompleteProvider } from "./contexts/GameCompleteContext";
+import { PlayerNameProvider } from "./contexts/PlayerNameContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <BrowserRouter>
+
+const ContextProviders = ({ children }) => (
+  <PlayerNameProvider>
     <GameCompleteProvider>
       <CharacterProvider>
-        <TimerProvider>
-          <FooterWrapper>
-            <Routes>
-              <Route path="waldo" element={<App />} />
-              <Route path="game" element={<Game />} />
-              <Route path="leaderboard" element={<LeaderBoard />} />
-            </Routes>
-          </FooterWrapper>
-        </TimerProvider>
+        <TimerProvider>{children}</TimerProvider>
       </CharacterProvider>
     </GameCompleteProvider>
+  </PlayerNameProvider>
+);
+
+root.render(
+  <BrowserRouter>
+    <ContextProviders>
+      <FooterWrapper>
+        <Routes>
+          <Route path="waldo" element={<App />} />
+          <Route path="game" element={<Game />} />
+          <Route path="leaderboard" element={<LeaderBoard />} />
+        </Routes>
+      </FooterWrapper>
+    </ContextProviders>
   </BrowserRouter>
 );

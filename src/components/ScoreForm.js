@@ -1,7 +1,10 @@
+import { usePlayerNameContext } from "../contexts/PlayerNameContext";
 import SecondButton from "./SecondButton";
 
 export default function ScoreForm(props) {
-  const { setName, className } = props;
+  const { className } = props;
+  const { setPlayerName } = usePlayerNameContext();
+
   return (
     <form className={"flex justify-center gap-2 " + className}>
       <label htmlFor="name" className="font-bold">
@@ -16,7 +19,7 @@ export default function ScoreForm(props) {
         onClick={(e) => {
           e.preventDefault();
           const inputName = document.getElementById("name");
-          setName(inputName.value);
+          setPlayerName(inputName.value);
         }}
       >
         Submit

@@ -1,7 +1,9 @@
 import { useTimerContext } from "../contexts/TimerContext";
+import { usePlayerNameContext } from "../contexts/PlayerNameContext";
+import Heading from "./Heading";
 
 export default function PlayerRank(props) {
-  const { name } = props;
+  const { playerName } = usePlayerNameContext();
   const { timer } = useTimerContext();
 
   const RankItem = (props) => (
@@ -11,10 +13,13 @@ export default function PlayerRank(props) {
   );
 
   return (
-    <div className={"flex justify-center gap-2 " + props.className}>
-      <RankItem label="Name">{name}</RankItem>
-      <RankItem label="Timer">{timer}</RankItem>
-      <RankItem label="Rank">TODO getRank</RankItem>
+    <div className="grid">
+      <Heading>Your Stats</Heading>
+      <div className={"flex justify-center gap-2 " + props.className}>
+        <RankItem label="Name">{playerName}</RankItem>
+        <RankItem label="Time">{timer}</RankItem>
+        <RankItem label="Rank">TODO getRank</RankItem>
+      </div>
     </div>
   );
 }
