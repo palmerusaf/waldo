@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ScreenContainer from "../Components/ScreenContainer";
-import GameCanvas from "../Components/GameCanvas.js";
-import Timer from "../Components/Timer";
-import CharacterBar from "../Components/CharacterBar.js";
-import CompletionPopup from "../Components/CompletionPopup.js";
+import ScreenContainer from "../components/ScreenContainer";
+import GameCanvas from "../components/GameCanvas.js";
+import Timer from "../components/Timer";
+import CharacterBar from "../components/CharacterBar.js";
+import CompletionPopup from "../components/CompletionPopup.js";
 import { useGameCompleteContext } from "../contexts/GameCompleteContext";
 import { useCharacterContext } from "../contexts/CharacterContext";
 import { useTimerContext } from "../contexts/TimerContext";

@@ -3,8 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import Game from "./screens/Game.js";
-import HighScores from "./screens/HighScores.js";
-import FooterWrapper from "./Components/FooterWrapper.js";
+import LeaderBoard from "./screens/LeaderBoard.js";
+import FooterWrapper from "./components/FooterWrapper.js";
 import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 import { CharacterProvider } from "./contexts/CharacterContext";
@@ -20,7 +20,7 @@ root.render(
             <Routes>
               <Route path="waldo" element={<App />} />
               <Route path="game" element={<Game />} />
-              <Route path="highscores" element={<HighScores />} />
+              <Route path="leaderboard" element={<LeaderBoard />} />
             </Routes>
           </FooterWrapper>
         </TimerProvider>

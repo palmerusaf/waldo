@@ -1,5 +1,5 @@
 import { useCharacterContext } from "../contexts/CharacterContext";
-import CharacterImg from "../Components/CharacterImg.js";
+import CharacterImg from "../components/CharacterImg.js";
 import styled from "styled-components";
 
 const LI = styled.li`

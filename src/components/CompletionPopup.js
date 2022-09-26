@@ -19,7 +19,7 @@ export default function CompletionPopup(props) {
         ) : (
           <>
             <PlayerRank className="pb-2" name={name} />
-            <PageButton page={"/highscores"}>View High Scores</PageButton>
+            <PageButton page={"/Leaderboard"}>View Leaderboard</PageButton>
           </>
         )}
       </DisplayBox>

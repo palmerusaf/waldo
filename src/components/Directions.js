@@ -11,8 +11,8 @@ export default function Directions() {
       <Heading>Directions</Heading>
       <div className="p-6">
         <MonoContent>
-          Find all the characters in the picture, then check the high score page
-          to see where you rank at.
+          Find all the characters in the picture, then check the Leaderboard
+          page to see where you rank at.
         </MonoContent>
       </div>
       <PageButton onClick={startTimer} page="/game">
