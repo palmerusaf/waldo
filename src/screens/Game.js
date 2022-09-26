@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ScreenContainer from "../components/ScreenContainer";
 import GameCanvas from "../components/GameCanvas.js";
 import Timer from "../components/Timer";
