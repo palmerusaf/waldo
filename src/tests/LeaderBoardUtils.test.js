@@ -1,9 +1,14 @@
-import { trimData, filterData, padData } from "../utils/LeaderBoardUtils.js";
+import {
+  trimData,
+  filterData,
+  padData,
+  getPlayerRank,
+} from "../utils/LeaderBoardUtils.js";
 
-const oneDataPoint = [{ name: "waldo", time: 40 }];
+const oneDataPoint = [{ name: "waldo1", time: 30 }];
 const twoDataPointsFiltered = [
   { name: "waldo2", time: 20 },
-  { name: "waldo1", time: 40 },
+  { name: "waldo1", time: 30 },
 ];
 const nineDataPointsFiltered = [
   { name: "waldo5", time: 10 },
@@ -46,7 +51,7 @@ const overTenDataPointsFiltered = [
 
 describe("filterData Tests", () => {
   const twoDataPointsUnfiltered = [
-    { name: "waldo1", time: 40 },
+    { name: "waldo1", time: 30 },
     { name: "waldo2", time: 20 },
   ];
   const nineDataPointsUnfiltered = [
@@ -125,7 +130,7 @@ describe("padData Tests", () => {
     { name: null, time: null },
   ];
   const oneDataPointPadded = [
-    { name: "waldo", time: 40 },
+    { name: "waldo1", time: 30 },
     { name: null, time: null },
     { name: null, time: null },
     { name: null, time: null },
@@ -138,7 +143,7 @@ describe("padData Tests", () => {
   ];
   const twoDataPointsPadded = [
     { name: "waldo2", time: 20 },
-    { name: "waldo1", time: 40 },
+    { name: "waldo1", time: 30 },
     { name: null, time: null },
     { name: null, time: null },
     { name: null, time: null },
@@ -200,5 +205,27 @@ describe("trimData Tests", () => {
   });
   it("Works with over ten data points", () => {
     expect(trimData(overTenDataPointsFiltered).length).toEqual(10);
+  });
+});
+
+describe("getPlayerRank Tests", () => {
+  const playerData = oneDataPoint[0];
+  it("Works with one data point", () => {
+    expect(getPlayerRank({ playerData, filteredData: oneDataPoint })).toBe(1);
+  });
+  it("Works with nine data points", () => {
+    expect(
+      getPlayerRank({ playerData, filteredData: nineDataPointsFiltered })
+    ).toBe(4);
+  });
+  it("Works with exactly ten data points", () => {
+    expect(
+      getPlayerRank({ playerData, filteredData: tenDataPointsFiltered })
+    ).toBe(5);
+  });
+  it("Works with over ten data points", () => {
+    expect(
+      getPlayerRank({ playerData, filteredData: overTenDataPointsFiltered })
+    ).toBe(8);
   });
 });

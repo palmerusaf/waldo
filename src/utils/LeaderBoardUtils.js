@@ -13,3 +13,8 @@ export const padData = (data) => {
   while (data.length < 10) data.push({ name: null, time: null });
   return data;
 };
+
+export const getPlayerRank = ({ playerData, filteredData }) =>
+  filteredData.findIndex(
+    ({ name, time }) => name === playerData.name && time === playerData.time
+  ) + 1;
