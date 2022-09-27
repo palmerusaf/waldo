@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MonoContent from "./MonoContent";
+import LargeLoading from "../imgs/large-loading.gif";
 
 export default function LeaderTable() {
   const [topTenList, setTopTenList] = useState(null);
@@ -8,8 +9,8 @@ export default function LeaderTable() {
     const playerRow = (item, index) => (
       <tr className="grid grid-cols-3">
         <td>{index + 1}</td>
-        <td>{item.name}</td>
-        <td>{item.time}</td>
+        <td>{item.name || "---"}</td>
+        <td>{item.time || "---"}</td>
       </tr>
     );
     return topTenList.map(playerRow);
@@ -30,7 +31,16 @@ export default function LeaderTable() {
         </tr>
         {topTenList && mapListToRows()}
       </table>
-      {!topTenList && <div>spinning thing</div>}
+      {!topTenList && (
+        <div className="flex">
+          Loading...
+          <img
+            className="h-40 ml-auto mr-2 -rotate-45"
+            src={LargeLoading}
+            alt="Waldo Loading Animation"
+          />
+        </div>
+      )}
     </MonoContent>
   );
 }
