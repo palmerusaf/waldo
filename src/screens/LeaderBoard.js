@@ -8,7 +8,7 @@ export default function LeaderBoard(props) {
   return (
     <ScreenContainer>
       <div className="flex h-full justify-center items-center">
-        <DisplayBox className="p-6">
+        <DisplayBox className="p-6 py-6">
           <Heading>Leaderboard</Heading>
           <LeaderTable />
           <PlayerRank />

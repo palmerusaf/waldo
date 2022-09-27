@@ -11,7 +11,7 @@ export default function CompletionPopup() {
 
   return (
     <GrayTransparent className="absolute w-full h-full grid justify-center items-center">
-      <DisplayBox className="px-2 py-5">
+      <DisplayBox className="md:px-4 px-1 py-6">
         <Heading className="p-0 m-0">Congratulations!</Heading>
         <p>You have found all the characters.</p>
         <p>Please enter your name below to find out where you rank.</p>
