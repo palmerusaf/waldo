@@ -15,7 +15,10 @@ export default function PlayerRank(props) {
 
   const RankItem = (props) => (
     <span className="font-bold flex justify-center gap-1">
-      {props.label}: <span className="font-normal">{props.children}</span>
+      {props.label}:{" "}
+      <span className="font-normal overflow-hidden overflow-ellipsis">
+        {props.children}
+      </span>
     </span>
   );
 

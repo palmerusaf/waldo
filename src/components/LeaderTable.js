@@ -12,8 +12,8 @@ export default function LeaderTable() {
     const playerRow = (item, index) => (
       <tr className="grid grid-cols-3" key={index}>
         <td>{index + 1}</td>
-        <td>{item.name || "---"}</td>
-        <td>{item.time || "---"}</td>
+        <td className="overflow-hidden text-ellipsis">{item.name || "---"}</td>
+        <td>{item.time === 0 || item.time ? item.time : "---"}</td>
       </tr>
     );
     return topTenList.map(playerRow);
