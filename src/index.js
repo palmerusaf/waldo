@@ -8,32 +8,22 @@ import FooterWrapper from "./components/FooterWrapper.js";
 import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 import { CharacterProvider } from "./contexts/CharacterContext";
+import { FirebaseProvider } from "./contexts/FirebaseContext.js";
 import { GameCompleteProvider } from "./contexts/GameCompleteContext";
 import { PlayerNameProvider } from "./contexts/PlayerNameContext";
-import { initializeApp } from "firebase/app";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCXz141XcA-4PbdZi0q8YXDpLwSxK1UQug",
-  authDomain: "waldo-7d581.firebaseapp.com",
-  projectId: "waldo-7d581",
-  storageBucket: "waldo-7d581.appspot.com",
-  messagingSenderId: "34874304663",
-  appId: "1:34874304663:web:99c627b7a87305a97ca1d2",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const ContextProviders = ({ children }) => (
-  <PlayerNameProvider>
-    <GameCompleteProvider>
-      <CharacterProvider>
-        <TimerProvider>{children}</TimerProvider>
-      </CharacterProvider>
-    </GameCompleteProvider>
-  </PlayerNameProvider>
+  <FirebaseProvider>
+    <PlayerNameProvider>
+      <GameCompleteProvider>
+        <CharacterProvider>
+          <TimerProvider>{children}</TimerProvider>
+        </CharacterProvider>
+      </GameCompleteProvider>
+    </PlayerNameProvider>
+  </FirebaseProvider>
 );
 
 root.render(
