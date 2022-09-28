@@ -1,9 +1,13 @@
-import { usePlayerNameContext } from "../contexts/PlayerNameContext";
 import SecondButton from "./SecondButton";
+import { usePlayerNameContext } from "../contexts/PlayerNameContext";
+import { useFirebaseContext } from "../contexts/FirebaseContext";
+import { useTimerContext } from "../contexts/TimerContext";
 
 export default function ScoreForm(props) {
   const { className } = props;
   const { setPlayerName } = usePlayerNameContext();
+  const { addRanking } = useFirebaseContext();
+  const { timer } = useTimerContext();
 
   return (
     <form className={"flex justify-center gap-2 " + className}>
@@ -20,6 +24,7 @@ export default function ScoreForm(props) {
           e.preventDefault();
           const inputName = document.getElementById("name");
           setPlayerName(inputName.value);
+          addRanking({ name: inputName.value, time: timer });
         }}
       >
         Submit
