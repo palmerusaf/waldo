@@ -1,12 +1,15 @@
+import React, { useState, useEffect } from "react";
+import Heading from "./Heading";
+import SmallLoading from "../imgs/small-loading.gif";
 import { useTimerContext } from "../contexts/TimerContext";
 import { usePlayerNameContext } from "../contexts/PlayerNameContext";
-import Heading from "./Heading";
-import React, { useState, useEffect } from "react";
-import SmallLoading from "../imgs/small-loading.gif";
+import { useFirebaseContext } from "../contexts/FirebaseContext";
+import { filterData, getPlayerRank } from "../utils/LeaderBoardUtils";
 
 export default function PlayerRank(props) {
   const { playerName } = usePlayerNameContext();
   const { timer } = useTimerContext();
+  const { getRankings } = useFirebaseContext();
 
   const [rank, setRank] = useState(null);
 
@@ -17,9 +20,11 @@ export default function PlayerRank(props) {
   );
 
   useEffect(() => {
-    //TODO fetch list
-    //TODO filter list
-    //TODO get rank from list
+    getRankings().then((data) => {
+      const filteredData = filterData(data);
+      const playerData = { name: playerName, time: timer };
+      setRank(getPlayerRank({ playerData, filteredData }));
+    });
   }, []);
 
   return (
@@ -27,7 +32,13 @@ export default function PlayerRank(props) {
       <Heading>Your Stats</Heading>
       <div className={"grid grid-cols-3"}>
         <RankItem label="Rank">
-          {rank || <img className="h-5" src={SmallLoading} alt="Hat loading animation" />}
+          {rank || (
+            <img
+              className="h-5"
+              src={SmallLoading}
+              alt="Hat loading animation"
+            />
+          )}
         </RankItem>
         <RankItem label="Name">{playerName}</RankItem>
         <RankItem label="Time">{timer}</RankItem>
