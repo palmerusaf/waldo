@@ -40,11 +40,11 @@ export function FirebaseProvider({ children }) {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-
-    return (
-      <FirebaseContext.Provider value={{ getRankings, addRanking }}>
-        {children}
-      </FirebaseContext.Provider>
-    );
   };
+
+  return (
+    <FirebaseContext.Provider value={{ getRankings, addRanking }}>
+      {children}
+    </FirebaseContext.Provider>
+  );
 }

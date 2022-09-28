@@ -1,3 +1,3 @@
 export default function MonoContent({ children }) {
-  return <p className="text-xl font-mono">{children}</p>;
+  return <div className="text-xl font-mono">{children}</div>;
 }
