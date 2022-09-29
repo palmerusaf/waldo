@@ -45,8 +45,21 @@ export function FirebaseProvider({ children }) {
     }
   };
 
+  const getCharacterLocations = async () => {
+    const characterLocationsCollection = collection(db, "characterLocations");
+    const characterLocationsSnapshot = await getDocs(
+      characterLocationsCollection
+    );
+    const characterLocationsList = characterLocationsSnapshot.docs.map((doc) =>
+      doc.data()
+    );
+    return characterLocationsList;
+  };
+
   return (
-    <FirebaseContext.Provider value={{ getRankings, addRanking, useRankings }}>
+    <FirebaseContext.Provider
+      value={{ getRankings, addRanking, useRankings, getCharacterLocations }}
+    >
       {children}
     </FirebaseContext.Provider>
   );
