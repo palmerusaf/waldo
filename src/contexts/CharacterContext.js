@@ -12,6 +12,8 @@ export function CharacterProvider({ children }) {
     { name: "odlaw", isFound: false },
   ]);
 
+  const [characterLocations, setCharacterLocations] = useState();
+
   const setCharacterFound = (pName) => {
     setCharacterList(
       characterList.map((char) => {
@@ -21,7 +23,14 @@ export function CharacterProvider({ children }) {
   };
 
   return (
-    <CharacterContext.Provider value={{ characterList, setCharacterFound }}>
+    <CharacterContext.Provider
+      value={{
+        characterList,
+        setCharacterFound,
+        characterLocations,
+        setCharacterLocations,
+      }}
+    >
       {children}
     </CharacterContext.Provider>
   );

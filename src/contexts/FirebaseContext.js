@@ -47,9 +47,11 @@ export function FirebaseProvider({ children }) {
 
   const getCharacterLocations = async () => {
     const characterLocationsCollection = collection(db, "characterLocations");
+    console.log('getting locations');
     const characterLocationsSnapshot = await getDocs(
       characterLocationsCollection
     );
+    console.log('locations retrieved');
     const characterLocationsList = characterLocationsSnapshot.docs.map((doc) =>
       doc.data()
     );

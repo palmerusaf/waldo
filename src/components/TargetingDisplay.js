@@ -1,5 +1,6 @@
+import React, { useState } from "react";
 import { useCharacterContext } from "../contexts/CharacterContext";
-import { useFirebaseContext } from "../contexts/FirebaseContext";
+import { isCharacterLocationCorrect } from "../utils/TargetingUtils";
 import CharacterImg from "../components/CharacterImg.js";
 import styled from "styled-components";
 import MagGlass from "../imgs/mag-glass.png";
@@ -19,7 +20,7 @@ export default function TargetingDisplay(props) {
       className="h-1/5 w-1/3 "
     >
       <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
-      <TargetList />
+      <TargetList coordinates={props.coordinates} />
     </TargetingContainer>
   );
 }
@@ -39,16 +40,24 @@ const LI = styled.li`
   animation: popIn 300ms;
 `;
 
-function TargetList({ className }) {
-  const { characterList, setCharacterFound } = useCharacterContext();
-  const { getCharacterLocations } = useFirebaseContext();
+function TargetList({ className, coordinates }) {
+  const { characterList, setCharacterFound, characterLocations } =
+    useCharacterContext();
 
   const TargetItem = ({ name, isFound }) => {
-    const handleClick = async () => {
-      console.log("TODO check database for", name, "positioning.");
-      const characterLocations = await getCharacterLocations();
-      console.log('characterLocations :>> ', characterLocations);
-      setCharacterFound(name);
+    const [borderColor, setBorderColor] = useState("");
+    const handleClick = () => {
+      const characterInfo = { name, x: coordinates.x, y: coordinates.y };
+      console.log(characterInfo);
+      console.log(isCharacterLocationCorrect(characterInfo, characterLocations));
+      if (isCharacterLocationCorrect(characterInfo, characterLocations)) {
+        setCharacterFound(name);
+      } else {
+        setBorderColor("border-red-400");
+        setTimeout(() => {
+          setBorderColor("");
+        }, 1000);
+      }
     };
 
     return (
@@ -56,7 +65,10 @@ function TargetList({ className }) {
         <LI
           onClick={handleClick}
           key={name}
-          className="grid content-center border-solid borderyellow-400 border-2 m-px py-0.5 rounded-full"
+          className={
+            "grid content-center border-solid border-yellow-400 border-2 m-px py-0.5 rounded-full " +
+            borderColor
+          }
         >
           <CharacterImg name={name} />
         </LI>
