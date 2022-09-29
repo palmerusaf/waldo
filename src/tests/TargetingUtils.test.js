@@ -8,13 +8,13 @@ describe("isCharacterLocationCorrect Tests", () => {
     { name: "odlaw", minX: 21, maxX: 22, minY: 35, maxY: 38 },
   ];
   const matchingNameAndLocation1 = { name: "waldo", x: 1, y: 16 };
-  const matchingNameAndLocation2 = { name: "winda", x: 7, y: 26 };
+  const matchingNameAndLocation2 = { name: "winda", x: 7, y: 22 };
 
   const matchingNameOnly1 = { name: "waldo", x: 21, y: 16 };
-  const matchingNameOnly2 = { name: "winda", x: 27, y: 26 };
+  const matchingNameOnly2 = { name: "winda", x: 27, y: 22 };
 
   const matchingLocationOnly1 = { name: "winda", x: 1, y: 16 };
-  const matchingLocationOnly2 = { name: "waldo", x: 7, y: 26 };
+  const matchingLocationOnly2 = { name: "waldo", x: 7, y: 22 };
 
   it("Returns true is name match and coordinates within range", () => {
     expect(isCharacterLocationCorrect(matchingNameAndLocation1,characterLocations)).toBe(true)
