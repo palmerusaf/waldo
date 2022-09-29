@@ -1,5 +1,5 @@
 import { useCharacterContext } from "../contexts/CharacterContext";
-import { useFirebaseContext } from '../contexts/FirebaseContext';
+import { useFirebaseContext } from "../contexts/FirebaseContext";
 import CharacterImg from "../components/CharacterImg.js";
 import styled from "styled-components";
 import MagGlass from "../imgs/mag-glass.png";
@@ -8,8 +8,8 @@ const TargetingContainer = styled.div`
   position: absolute;
   display: grid;
   grid-template-columns: 1.5fr 3fr;
-  top: ${(props) => props.coordinates.y-5}%;
-  left: ${(props) => props.coordinates.x-2.5}%;
+  top: ${(props) => props.coordinates.y - 5}%;
+  left: ${(props) => props.coordinates.x - 2.5}%;
 `;
 
 export default function TargetingDisplay(props) {
@@ -41,10 +41,13 @@ const LI = styled.li`
 
 function TargetList({ className }) {
   const { characterList, setCharacterFound } = useCharacterContext();
+  const { getCharacterLocations } = useFirebaseContext();
 
   const TargetItem = ({ name, isFound }) => {
-    const handleClick = () => {
+    const handleClick = async () => {
       console.log("TODO check database for", name, "positioning.");
+      const characterLocations = await getCharacterLocations();
+      console.log('characterLocations :>> ', characterLocations);
       setCharacterFound(name);
     };
 
@@ -67,4 +70,3 @@ function TargetList({ className }) {
     </ul>
   );
 }
-
