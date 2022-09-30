@@ -5,27 +5,24 @@ const TimerContext = React.createContext();
 export const useTimerContext = () => useContext(TimerContext);
 
 let intervalId = null;
-let timerRunning = false;
 
 export function TimerProvider({ children }) {
   const [timer, setTimer] = useState(0);
 
   const startTimer = () => {
-    if (timerRunning) return;
+    if (timer > 0) return;
     intervalId = setInterval(() => {
       setTimer((prevTimer) => prevTimer + 1);
     }, 1000);
-    timerRunning = true;
   };
 
   const stopTimer = () => {
     clearInterval(intervalId);
     intervalId = null;
-    timerRunning = false;
   };
 
   const resetTimer = () => {
-    if (timerRunning) stopTimer();
+    if (timer > 0) stopTimer();
     setTimer(0);
   };
 
