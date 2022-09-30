@@ -16,24 +16,19 @@ export default function GameCanvas() {
     setCoordinates(position);
   };
 
-  const [isFocused, setIsFocused] = useState(false);
+  const [coordinates, setCoordinates] = useState(null);
 
-  const toggleIsFocused = () => {
-    setIsFocused(!isFocused);
-  };
-
-  const [coordinates, setCoordinates] = useState({ x: null, y: null });
+  const clearCoordinates = () => setCoordinates(null);
 
   return (
-    <button
-      className="flex relative"
-      onFocus={toggleIsFocused}
-      onBlur={toggleIsFocused}
-      onClick={handleClick}
-      id="canvas"
-    >
+    <button className="flex relative" onClick={handleClick} id="canvas">
       <img src={Canvas} alt="Waldo Canvas" />
-      {isFocused && <TargetingDisplay coordinates={coordinates} />}
+      {coordinates && (
+        <TargetingDisplay
+          clearCoordinates={clearCoordinates}
+          coordinates={coordinates}
+        />
+      )}
     </button>
   );
 }

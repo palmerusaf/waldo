@@ -13,19 +13,7 @@ const TargetingContainer = styled.div`
   left: ${(props) => props.coordinates.x - 2.5}%;
 `;
 
-export default function TargetingDisplay(props) {
-  return (
-    <TargetingContainer
-      coordinates={props.coordinates}
-      className="h-1/5 w-1/3 "
-    >
-      <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
-      <TargetList coordinates={props.coordinates} />
-    </TargetingContainer>
-  );
-}
-
-const LI = styled.li`
+const StyledListItem = styled.li`
   background-color: rgba(103, 225, 225, 0.4);
   border-width: 2px;
   border-color: #ffff66 #dfc202 #dfc202 #ffff66;
@@ -37,48 +25,98 @@ const LI = styled.li`
       transform: scale(1);
     }
   }
-  animation: popIn 300ms;
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  ${(props) => props.customStyle}
 `;
 
-function TargetList({ className, coordinates }) {
+export default function TargetingDisplay(props) {
+  return (
+    <TargetingContainer
+      coordinates={props.coordinates}
+      className="h-1/5 w-1/3 "
+    >
+      <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
+      <TargetList
+        coordinates={props.coordinates}
+        clearCoordinates={props.clearCoordinates}
+      />
+    </TargetingContainer>
+  );
+}
+
+function TargetList(props) {
+  const { className, coordinates, clearCoordinates } = props;
   const { characterList, setCharacterFound, characterLocations } =
     useCharacterContext();
-
-  const TargetItem = ({ name, isFound }) => {
-    const [borderColor, setBorderColor] = useState("");
-    const handleClick = () => {
-      const characterInfo = { name, x: coordinates.x, y: coordinates.y };
-      console.log(characterInfo);
-      console.log(isCharacterLocationCorrect(characterInfo, characterLocations));
-      if (isCharacterLocationCorrect(characterInfo, characterLocations)) {
-        setCharacterFound(name);
-      } else {
-        setBorderColor("border-red-400");
-        setTimeout(() => {
-          setBorderColor("");
-        }, 1000);
-      }
-    };
-
-    return (
-      !isFound && (
-        <LI
-          onClick={handleClick}
-          key={name}
-          className={
-            "grid content-center border-solid border-yellow-400 border-2 m-px py-0.5 rounded-full " +
-            borderColor
-          }
-        >
-          <CharacterImg name={name} />
-        </LI>
-      )
-    );
-  };
 
   return (
     <ul className={"grid grid-cols-4 max-h-full " + className}>
       {characterList.map(TargetItem)}
     </ul>
   );
+
+  function TargetItem({ name, isFound }) {
+    const [customStyle, setCustomStyle] = useState("");
+
+    const wrongSelectionStyle = `
+                              border-color: red;
+                              animation: popIn 300ms;
+                              animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                              animation-iteration-count: infinite;
+                              transform: translate3d(0, 0, 0);
+`;
+    const rightSelectionStyle = `border-color:green;`;
+
+    function handleTargetItemClick() {
+      const characterInfo = { name, x: coordinates.x, y: coordinates.y };
+
+      if (isCharacterLocationCorrect(characterInfo, characterLocations)) {
+        setCustomStyle(rightSelectionStyle);
+        setTimeout(() => {
+          setCharacterFound(name);
+          clearCoordinates();
+        }, 1000);
+      } else {
+        setCustomStyle(wrongSelectionStyle);
+        setTimeout(() => {
+          setCustomStyle("");
+          clearCoordinates();
+        }, 1000);
+      }
+    }
+
+    return (
+      !isFound && (
+        <StyledListItem
+          onClick={handleTargetItemClick}
+          key={name}
+          className="grid content-center border-solid border-2 m-px py-0.5 rounded-full"
+          customStyle={customStyle}
+        >
+          <CharacterImg name={name} />
+        </StyledListItem>
+      )
+    );
+  }
 }
