@@ -4,11 +4,14 @@ import TargetingDisplay from "./TargetingDisplay";
 import React, { useState } from "react";
 import LargeLoading from "../imgs/large-loading.gif";
 import DisplayBox from "./DisplayBox";
+import MarkedLocations from "./MarkedLocations.js";
 
 export default function GameCanvas() {
   const handleClick = (e) => {
     const nonTargetingClick = !(
-      e.target.alt === "Waldo Canvas" || e.target.alt === "Magnifying Glass"
+      e.target.alt === "Waldo Canvas" ||
+      e.target.alt === "Magnifying Glass" ||
+      e.target.alt === "Marked Location"
     );
 
     if (nonTargetingClick) return;
@@ -17,11 +20,10 @@ export default function GameCanvas() {
   };
 
   const [coordinates, setCoordinates] = useState(null);
-
   const clearCoordinates = () => setCoordinates(null);
 
   return (
-    <button className="flex relative" onClick={handleClick} id="canvas">
+    <button className="flex relative z-0" onClick={handleClick} id="canvas">
       <img src={Canvas} alt="Waldo Canvas" />
       {coordinates && (
         <TargetingDisplay
@@ -29,6 +31,7 @@ export default function GameCanvas() {
           coordinates={coordinates}
         />
       )}
+      <MarkedLocations />
     </button>
   );
 }

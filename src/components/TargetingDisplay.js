@@ -54,7 +54,7 @@ export default function TargetingDisplay(props) {
   return (
     <TargetingContainer
       coordinates={props.coordinates}
-      className="h-1/5 w-1/3 "
+      className="h-1/5 w-1/3 z-20 "
     >
       <img src={MagGlass} alt="Magnifying Glass" className="h-full" />
       <TargetList
