@@ -86,7 +86,9 @@ function TargetList(props) {
                               animation-iteration-count: infinite;
                               transform: translate3d(0, 0, 0);
 `;
-    const rightSelectionStyle = `border-color:green;`;
+    const rightSelectionStyle = `
+    border: solid #00ff00 3px;
+    `;
 
     function handleTargetItemClick() {
       const characterInfo = { name, x: coordinates.x, y: coordinates.y };
