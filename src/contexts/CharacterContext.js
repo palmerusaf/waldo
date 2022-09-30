@@ -5,7 +5,7 @@ const CharacterContext = React.createContext();
 export const useCharacterContext = () => useContext(CharacterContext);
 
 export function CharacterProvider({ children }) {
-  const [characterList, setCharacterList] = useState([
+  const [foundStatusList, setFoundStatusList] = useState([
     { name: "waldo", isFound: false },
     { name: "winda", isFound: false },
     { name: "wizard", isFound: false },
@@ -15,8 +15,8 @@ export function CharacterProvider({ children }) {
   const [characterLocations, setCharacterLocations] = useState();
 
   const setCharacterFound = (pName) => {
-    setCharacterList(
-      characterList.map((char) => {
+    setFoundStatusList(
+      foundStatusList.map((char) => {
         return char.name === pName ? { ...char, isFound: true } : char;
       })
     );
@@ -25,7 +25,7 @@ export function CharacterProvider({ children }) {
   return (
     <CharacterContext.Provider
       value={{
-        characterList,
+        foundStatusList,
         setCharacterFound,
         characterLocations,
         setCharacterLocations,

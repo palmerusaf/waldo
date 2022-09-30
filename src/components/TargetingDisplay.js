@@ -67,12 +67,12 @@ export default function TargetingDisplay(props) {
 
 function TargetList(props) {
   const { className, coordinates, clearCoordinates } = props;
-  const { characterList, setCharacterFound, characterLocations } =
+  const { foundStatusList, setCharacterFound, characterLocations } =
     useCharacterContext();
 
   return (
     <ul className={"grid grid-cols-4 max-h-full " + className}>
-      {characterList.map(TargetItem)}
+      {foundStatusList.map(TargetItem)}
     </ul>
   );
 

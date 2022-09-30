@@ -11,16 +11,16 @@ import { useFirebaseContext } from "../contexts/FirebaseContext";
 
 export default function Game() {
   const { gameComplete, setGameComplete } = useGameCompleteContext();
-  const { characterList, setCharacterLocations, characterLocations } =
+  const { foundStatusList, setCharacterLocations, characterLocations } =
     useCharacterContext();
   const { startTimer, stopTimer } = useTimerContext();
   const { getCharacterLocations } = useFirebaseContext();
 
   useEffect(() => {
-    if (characterList.some((char) => !char.isFound)) return;
+    if (foundStatusList.some((char) => !char.isFound)) return;
     stopTimer();
     setGameComplete(true);
-  }, [characterList]);
+  }, [foundStatusList]);
 
   useEffect(() => {
     getCharacterLocations().then((locations) => {

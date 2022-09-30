@@ -7,7 +7,7 @@ import SecondButton from "./SecondButton.js";
 import { useState } from "react";
 
 export default function CharacterBar() {
-  const { characterList } = useCharacterContext();
+  const { foundStatusList } = useCharacterContext();
 
   const [showCharacters, setShowCharacters] = useState(true);
 
@@ -41,7 +41,7 @@ export default function CharacterBar() {
       </SecondButton>
 
       <ul className="grid grid-cols-4 grid-rows-1 gap-3 mt-1 mx-3">
-        {characterList.map(CharacterItem)}
+        {foundStatusList.map(CharacterItem)}
       </ul>
     </DisplayBox>
   );
