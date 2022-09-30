@@ -16,6 +16,25 @@ export const isCharacterLocationCorrect = (
   return characterLocations.some(checkMatch);
 };
 
+export const getMarkerCoordinates = ({
+  foundCharacters,
+  characterLocations,
+}) => {
+  const getCoordinate = ({ name }) => {
+    const location = characterLocations.find((item) => item.name === name);
+    const { minX, minY, maxX, maxY } = location;
+
+    const getCenter = (min, max) => Math.floor((min + max) / 2);
+    
+    const centerX = getCenter(minX, maxX);
+    const centerY = getCenter(minY, maxY);
+
+    return { x: centerX, y: centerY };
+  };
+
+  return foundCharacters.map(getCoordinate);
+};
+
 export const getRelativeClickPosition = (click) => {
   const target = document.getElementById("canvas");
   const inTargetX = click.pageX - target.offsetLeft;
