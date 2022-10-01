@@ -15,8 +15,11 @@ export default function GameCanvas() {
     );
 
     if (nonTargetingClick) return;
+    setCoordinates(null);
     const position = getRelativeClickPosition(e);
+    setTimeout(() => {
     setCoordinates(position);
+    }, 300);
   };
 
   const [coordinates, setCoordinates] = useState(null);

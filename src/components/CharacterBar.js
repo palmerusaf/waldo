@@ -52,12 +52,11 @@ const Characters = styled.ul`
   @keyframes expand {
     from {
       transform: scale(0);
-      height: 0;
+      margin-top: -43%;
     }
     to {
       transform: scale(1);
-      height: 142px;
     }
   }
-  animation: expand 1000ms;
+  animation: expand 1000ms ;
 `;

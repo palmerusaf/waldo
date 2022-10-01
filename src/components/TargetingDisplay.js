@@ -11,6 +11,20 @@ const TargetingContainer = styled.div`
   grid-template-columns: 1.5fr 3fr;
   top: ${(props) => props.coordinates.y - 5}%;
   left: ${(props) => props.coordinates.x - 2.5}%;
+  @keyframes move {
+    0% {
+      opacity: 0;
+      transform: translate(5%, 15%);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  animation: move 0.5s;
 `;
 
 const StyledListItem = styled.li`
