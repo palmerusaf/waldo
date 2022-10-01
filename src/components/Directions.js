@@ -5,15 +5,15 @@ import MonoContent from "./MonoContent";
 
 export default function Directions() {
   return (
-    <DisplayBox>
-      <Heading>Directions</Heading>
-      <div className="p-6">
-        <MonoContent>
-          Find all the characters in the picture, then check the Leaderboard
-          page to see where you rank at.
-        </MonoContent>
-      </div>
-      <PageButton page="/game">Start Game</PageButton>
-    </DisplayBox>
+    <div className="self-center">
+      <DisplayBox className="py-5">
+        <Heading>Directions</Heading>
+        <div className="p-4 pt-3 flex flex-col text-md md:text-xl gap-1">
+          <p>Find all the characters in the picture.</p>
+          <p>Then check the Leaderboard page to see where you rank at.</p>
+        </div>
+        <PageButton page="/game">Start Game</PageButton>
+      </DisplayBox>
+    </div>
   );
 }

@@ -14,9 +14,9 @@ export default function PlayerRank(props) {
   const [rank, setRank] = useState(null);
 
   const RankItem = (props) => (
-    <span className="font-bold flex justify-center gap-1">
-      {props.label}:{" "}
-      <span className="font-normal overflow-hidden overflow-ellipsis">
+    <span className={"font-bold grid " + props.className}>
+      {props.label}:
+      <span className="font-normal overflow-hidden overflow-ellipsis ">
         {props.children}
       </span>
     </span>
@@ -33,14 +33,20 @@ export default function PlayerRank(props) {
   return (
     <div className={"grid " + props.className}>
       <Heading>Your Stats</Heading>
-      <div className={"grid grid-cols-3"}>
+      <div
+        className={
+          "grid grid-cols-3 w-full pt-2 px-4 whitespace-nowrap md:text-xl "
+        }
+      >
         <RankItem label="Rank">
           {rank || (
-            <img
-              className="h-5"
-              src={SmallLoading}
-              alt="Hat loading animation"
-            />
+            <div className="flex justify-center">
+              <img
+                className="h-5 justify-self-center self-center"
+                src={SmallLoading}
+                alt="Hat loading animation"
+              />
+            </div>
           )}
         </RankItem>
         <RankItem label="Name">{playerName}</RankItem>

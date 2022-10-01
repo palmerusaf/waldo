@@ -14,7 +14,7 @@ export default function LeaderBoard() {
   return (
     <ScreenContainer>
       <div className="flex h-full justify-center items-center">
-        <DisplayBox className="p-6 py-6">
+        <DisplayBox className="py-7">
           <Heading>Leaderboard</Heading>
           <LeaderTable />
           <PlayerRank />

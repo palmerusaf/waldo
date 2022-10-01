@@ -5,6 +5,7 @@ import DisplayBox from "./DisplayBox.js";
 import Heading from "./Heading";
 import SecondButton from "./SecondButton.js";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function CharacterBar() {
   const { foundStatusList } = useCharacterContext();
@@ -18,7 +19,6 @@ export default function CharacterBar() {
   );
 
   const CharacterItem = ({ name, isFound }) => {
-    if (!showCharacters) return;
     return (
       <li key={name} className="flex items-center justify-center relative p-1">
         <figure>
@@ -31,18 +31,33 @@ export default function CharacterBar() {
   };
 
   return (
-    <DisplayBox className="my-3">
-      <Heading className={"relative"}>Characters</Heading>
+    <DisplayBox className="my-3 w-5/6 relative self-center">
+      <Heading className="">Characters</Heading>
       <SecondButton
         onClick={() => setShowCharacters(!showCharacters)}
-        className="absolute top-6 right-7"
+        className="absolute top-2 right-5"
       >
         {showCharacters ? "Hide" : "Show"}
       </SecondButton>
-
-      <ul className="grid grid-cols-4 grid-rows-1 gap-3 mt-1 mx-3">
-        {foundStatusList.map(CharacterItem)}
-      </ul>
+      {showCharacters && (
+        <Characters className="grid grid-cols-4 grid-rows-1 gap-3 mt-1 mx-3">
+          {foundStatusList.map(CharacterItem)}
+        </Characters>
+      )}
     </DisplayBox>
   );
 }
+
+const Characters = styled.ul`
+  @keyframes expand {
+    from {
+      transform: scale(0);
+      height: 0;
+    }
+    to {
+      transform: scale(1);
+      height: 142px;
+    }
+  }
+  animation: expand 1000ms;
+`;

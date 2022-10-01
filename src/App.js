@@ -4,7 +4,7 @@ import Directions from "./components/Directions.js";
 
 function App() {
   return (
-    <ScreenContainer className="bg-gray-800">
+    <ScreenContainer className="content-center md:items-center justify-center px-4">
       <Title />
       <Directions />
     </ScreenContainer>
