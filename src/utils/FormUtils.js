@@ -10,10 +10,10 @@ export const isInputValid = (input) =>
   );
 
 export const getErrorMsg = (input) => {
-  if (input == 0) return "Input cannot be blank.";
-  if (input.includes(" ")) return "Input cannot contain spaces.";
-  if (input.length > 20) return "Input cannot contain over 20 characters.";
-  if (!input.match(/^[A-Za-z]+$/)) return "Input must only be letters.";
-  if (filter.isProfane(input)) return "Input cannot contain cursing.";
+  if (input === "") return "Name cannot be blank.";
+  if (input.includes(" ")) return "Name cannot contain spaces.";
+  if (input.length > 20) return "Name cannot contain over 20 characters.";
+  if (!input.match(/^[A-Za-z]+$/)) return "Name must only be letters.";
+  if (filter.isProfane(input)) return "Name cannot contain cursing.";
   return null;
 };

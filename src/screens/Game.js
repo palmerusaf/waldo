@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ScreenContainer from "../components/ScreenContainer";
 import GameCanvas, { CanvasLoading } from "../components/GameCanvas.js";
 import Timer from "../components/Timer";
 import CharacterBar from "../components/CharacterBar.js";
 import CompletionPopup from "../components/CompletionPopup.js";
-import { useGameCompleteContext } from "../contexts/GameCompleteContext";
 import { useCharacterContext } from "../contexts/CharacterContext";
 import { useTimerContext } from "../contexts/TimerContext";
 import { useFirebaseContext } from "../contexts/FirebaseContext";
 
 export default function Game() {
-  const { gameComplete, setGameComplete } = useGameCompleteContext();
+  const [gameComplete, setGameComplete] = useState(false);
   const { foundStatusList, setCharacterLocations, characterLocations } =
     useCharacterContext();
   const { startTimer, stopTimer } = useTimerContext();
@@ -20,6 +19,7 @@ export default function Game() {
     if (foundStatusList.some((char) => !char.isFound)) return;
     stopTimer();
     setGameComplete(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [foundStatusList]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function Game() {
       setCharacterLocations(locations);
       startTimer();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

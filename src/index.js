@@ -9,7 +9,6 @@ import { TimerProvider } from "./contexts/TimerContext.js";
 import "./index.css";
 import { CharacterProvider } from "./contexts/CharacterContext";
 import { FirebaseProvider } from "./contexts/FirebaseContext.js";
-import { GameCompleteProvider } from "./contexts/GameCompleteContext";
 import { PlayerNameProvider } from "./contexts/PlayerNameContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,11 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const ContextProviders = ({ children }) => (
   <FirebaseProvider>
     <PlayerNameProvider>
-      <GameCompleteProvider>
-        <CharacterProvider>
-          <TimerProvider>{children}</TimerProvider>
-        </CharacterProvider>
-      </GameCompleteProvider>
+      <CharacterProvider>
+        <TimerProvider>{children}</TimerProvider>
+      </CharacterProvider>
     </PlayerNameProvider>
   </FirebaseProvider>
 );

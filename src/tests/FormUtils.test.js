@@ -40,31 +40,27 @@ describe("isInputValid Tests", () => {
 
 describe("getErrorMsg Tests", () => {
   it("Returns msg if input blank", () => {
-    expect(getErrorMsg(inputBlank)).toBe("Input cannot be blank.");
+    expect(getErrorMsg(inputBlank)).toBe("Name cannot be blank.");
   });
   it("Returns msg if input has space", () => {
-    expect(getErrorMsg(inputWithSpace1)).toBe("Input cannot contain spaces.");
-    expect(getErrorMsg(inputWithSpace2)).toBe("Input cannot contain spaces.");
+    expect(getErrorMsg(inputWithSpace1)).toBe("Name cannot contain spaces.");
+    expect(getErrorMsg(inputWithSpace2)).toBe("Name cannot contain spaces.");
   });
   it("Returns msg if input has cursing", () => {
-    expect(getErrorMsg(inputWithCursing1)).toBe(
-      "Input cannot contain cursing."
-    );
-    expect(getErrorMsg(inputWithCursing2)).toBe(
-      "Input cannot contain cursing."
-    );
+    expect(getErrorMsg(inputWithCursing1)).toBe("Name cannot contain cursing.");
+    expect(getErrorMsg(inputWithCursing2)).toBe("Name cannot contain cursing.");
   });
   it("Returns msg if input has >20 chars", () => {
     expect(getErrorMsg(inputWithOver20Chars1)).toBe(
-      "Input cannot contain over 20 characters."
+      "Name cannot contain over 20 characters."
     );
     expect(getErrorMsg(inputWithOver20Chars2)).toBe(
-      "Input cannot contain over 20 characters."
+      "Name cannot contain over 20 characters."
     );
   });
   it("Returns msg if input is other than letters", () => {
-    expect(getErrorMsg(inputNotLetters1)).toBe("Input must only be letters.");
-    expect(getErrorMsg(inputNotLetters2)).toBe("Input must only be letters.");
+    expect(getErrorMsg(inputNotLetters1)).toBe("Name must only be letters.");
+    expect(getErrorMsg(inputNotLetters2)).toBe("Name must only be letters.");
   });
   it("Otherwise returns null", () => {
     expect(getErrorMsg(inputCorrect1)).toBe(null);
