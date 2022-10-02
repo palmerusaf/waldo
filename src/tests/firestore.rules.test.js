@@ -22,7 +22,7 @@ describe("playerLocations Tests", () => {
       },
     });
     const anon = testEnv.unauthenticatedContext();
-    const playerLocations = collection(anon, "playerLocations");
+    const playerLocations = collection(anon.firestore(), "playerLocations");
     await assertSucceeds(getDocs(anon.firestore(), playerLocations));
   });
 });
