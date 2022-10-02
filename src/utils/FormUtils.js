@@ -2,10 +2,8 @@ const Filter = require("bad-words");
 const filter = new Filter();
 export const isInputValid = (input) =>
   !(
-    input == 0 ||
-    input.includes(" ") ||
-    input.length > 20 ||
     !input.match(/^[A-Za-z]+$/) ||
+    input.length > 20 ||
     filter.isProfane(input)
   );
 
