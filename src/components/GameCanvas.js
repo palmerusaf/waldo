@@ -18,8 +18,8 @@ export default function GameCanvas() {
     setCoordinates(null);
     const position = getRelativeClickPosition(e);
     setTimeout(() => {
-    setCoordinates(position);
-    }, 300);
+      setCoordinates(position);
+    }, 0);
   };
 
   const [coordinates, setCoordinates] = useState(null);

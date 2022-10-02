@@ -14,7 +14,7 @@ const TargetingContainer = styled.div`
   @keyframes move {
     0% {
       opacity: 0;
-      transform: translate(5%, 15%);
+      transform: translate(2.5%, 7.5%);
     }
     50% {
       opacity: 0.3;
@@ -24,7 +24,7 @@ const TargetingContainer = styled.div`
       transform: translate(0, 0);
     }
   }
-  animation: move 0.5s;
+  animation: move 500ms;
 `;
 
 const StyledListItem = styled.li`
