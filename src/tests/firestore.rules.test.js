@@ -1,28 +1,68 @@
+/**
+ * @jest-environment node
+ */
 import {
   assertFails,
   assertSucceeds,
   initializeTestEnvironment,
   RulesTestEnvironment,
 } from "@firebase/rules-unit-testing";
-import { getDocs } from "firebase/firestore";
-import { collection } from "firebase/firestore/lite";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 const fs = require("fs");
 
-const firebase = require("@firebase/rules-unit-testing");
 const MY_PROJECT_ID = "waldo-7d581";
 
-describe("playerLocations Tests", () => {
+const getTestEnv = async () =>
+  initializeTestEnvironment({
+    projectId: "waldo-7d581",
+    firestore: {
+      host: "localhost",
+      port: "8080",
+      rules: fs.readFileSync("firestore.rules", "utf8"),
+    },
+  });
+
+const getFirestore = async () => {
+  const testEnv = await getTestEnv();
+  return testEnv.unauthenticatedContext().firestore();
+};
+
+const getApp = async () => {
+  const testEnv = await getTestEnv();
+  return testEnv.unauthenticatedContext();
+};
+
+const getRankings = async (db) => {
+  const rankingsCollection = collection(db, "rankings");
+  const rankingsSnapshot = await getDocs(rankingsCollection);
+  const rankingsList = rankingsSnapshot.docs.map((doc) => doc.data());
+  return rankingsList;
+};
+
+const addRanking = async ({ name, time }, db) => {
+  try {
+    const rankingsCollection = collection(db, "rankings");
+    const docRef = await addDoc(rankingsCollection, { name, time });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+const getCharacterLocations = async (db) => {
+  const characterLocationsCollection = collection(db, "characterLocations");
+  const characterLocationsSnapshot = await getDocs(
+    characterLocationsCollection
+  );
+  const characterLocationsList = characterLocationsSnapshot.docs.map((doc) =>
+    doc.data()
+  );
+  return characterLocationsList;
+};
+
+describe("characterLocations Tests", () => {
   it("can read items in read-only collection", async () => {
-    const testEnv = await initializeTestEnvironment({
-      projectId: "waldo-7d581",
-      firestore: {
-        host: "localhost",
-        port: "8080",
-        rules: fs.readFileSync("firestore.rules", "utf8"),
-      },
-    });
-    const anon = testEnv.unauthenticatedContext();
-    const playerLocations = collection(anon.firestore(), "playerLocations");
-    await assertSucceeds(getDocs(anon.firestore(), playerLocations));
+    const db = await getFirestore();
+    await assertSucceeds(getCharacterLocations(db));
   });
 });

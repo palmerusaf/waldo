@@ -6,7 +6,6 @@ import {
   getDocs,
   addDoc,
 } from "firebase/firestore/lite";
-import { useCollection } from "react-firebase-hooks/firestore";
 
 const FirebaseContext = React.createContext();
 
@@ -33,8 +32,6 @@ export function FirebaseProvider({ children }) {
     const rankingsList = rankingsSnapshot.docs.map((doc) => doc.data());
     return rankingsList;
   };
-
-  const useRankings = () => useCollection(rankingsCollection);
 
   const addRanking = async ({ name, time }) => {
     try {
