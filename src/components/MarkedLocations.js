@@ -50,7 +50,7 @@ export default function MarkedLocations() {
             coordinate={coordinate}
             alt="Marked Location"
             src={GreenCircle}
-            key={coordinate}
+            key={coordinate.x + coordinate.y}
           />
         ))}
     </>
