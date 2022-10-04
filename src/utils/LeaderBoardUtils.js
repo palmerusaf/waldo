@@ -1,7 +1,9 @@
 export const filterData = (data) => {
   if (data.length === 0) return data;
-  data.sort((firstItem, secondItem) => firstItem.time - secondItem.time);
-  return data;
+  const sortedData = [...data].sort(
+    (firstItem, secondItem) => firstItem.time - secondItem.time
+  );
+  return sortedData;
 };
 
 export const trimData = (data) => {
