@@ -4,5 +4,34 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false; 
     }
+    match /characterLocations/{locations} {
+      allow list: if true;
+    }
+    match /rankings/{ranks} {
+      allow list: if true;
+      allow create: if timeIsOverZero() && nameIsValid() && onlyTwoFields();
+
+      function getIncomingData() {
+        return request.resource.data;
+      }
+      function timeIsOverZero() {
+        return getIncomingData().time > 0;
+      }
+      function nameIsValid() {
+        return underTwentyChars() && nameIsOnlyletters();
+      }
+      function nameIsOnlyletters() {
+        return getIncomingData().name.matches("[A-Za-z]+") == true;
+      }
+      function underTwentyChars() {
+        return getIncomingData().name.size() < 20;
+      }
+      function isValidFields() {
+        return onlyTwoFields();
+      }
+      function onlyTwoFields() {
+        return getIncomingData().size() == 2
+      }
+    }
   }
 }

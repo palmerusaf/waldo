@@ -82,6 +82,11 @@ const getCharacterLocations = async (db) => {
   return characterLocationsList;
 };
 
+afterAll(async () => {
+  (await getTestEnv()).cleanup();
+  (await getTestEnv()).clearFirestore();
+});
+
 describe("characterLocations Tests", () => {
   it("can read in list mode", async () => {
     const db = await getFirestore();
@@ -95,6 +100,14 @@ describe("characterLocations Tests", () => {
     const docId = await addTestLocation(testEnv);
 
     await assertFails(db.collection("characterLocations").doc(docId).get());
+  });
+
+  it("cannot create docs", async () => {
+    const db = await getFirestore();
+
+    await assertFails(
+      db.collection("characterLocations").add({ bar: "foo", foo: "bar" })
+    );
   });
 
   it("cannot delete single docs", async () => {
@@ -159,27 +172,25 @@ describe("basic rankings Tests", () => {
 });
 
 describe("create rankings Tests", () => {
-  it("cannot create with time less than one", async () => {
-    const testEnv = await getTestEnv();
-    const db = testEnv.unauthenticatedContext().firestore();
+  it("time must be greater than 0", async () => {
+    const db = await getFirestore();
 
+    await assertSucceeds(addRanking({ name: "matt", time: 20 }, db));
     await assertFails(addRanking({ name: "matt", time: 0 }, db));
     await assertFails(addRanking({ name: "matt", time: -1 }, db));
   });
   it("cannot create if name blank", async () => {
-    const testEnv = await getTestEnv();
-    const db = testEnv.unauthenticatedContext().firestore();
+    const db = await getFirestore();
 
     await assertFails(addRanking({ name: "", time: 40 }, db));
   });
   it("cannot create if name has space", async () => {
-    const testEnv = await getTestEnv();
-    const db = testEnv.unauthenticatedContext().firestore();
+    const db = await getFirestore();
 
     await assertFails(addRanking({ name: " matt", time: 40 }, db));
     await assertFails(addRanking({ name: " m att", time: 40 }, db));
   });
-  it("cannot create if name has cursing", async () => {
+  it.skip("cannot create if name has cursing", async () => {
     const testEnv = await getTestEnv();
     const db = testEnv.unauthenticatedContext().firestore();
 
@@ -187,16 +198,24 @@ describe("create rankings Tests", () => {
     await assertFails(addRanking({ name: "asshole", time: 40 }, db));
   });
   it("cannot create if name has >20 chars", async () => {
-    const testEnv = await getTestEnv();
-    const db = testEnv.unauthenticatedContext().firestore();
+    const db = await getFirestore();
 
-    await assertFails(addRanking({ name: "maaaaaaaaaaaaaaaaaaaaaatt", time: 40 }, db));
+    await assertFails(
+      addRanking({ name: "maaaaaaaaaaaaaaaaaaaaaatt", time: 40 }, db)
+    );
   });
   it("cannot create if name is other than letters", async () => {
-    const testEnv = await getTestEnv();
-    const db = testEnv.unauthenticatedContext().firestore();
+    const db = await getFirestore();
 
     await assertFails(addRanking({ name: "1matt", time: 40 }, db));
     await assertFails(addRanking({ name: "1m*att", time: 40 }, db));
+  });
+  it("only create with valid fields", async () => {
+    const db = await getFirestore();
+
+    // await assertFails(addRanking({ name: "matt" }, db));
+    await assertFails(
+      db.collection("rankings").add({ name: "matt", time: 39, invalid: "bar" })
+    );
   });
 });
