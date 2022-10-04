@@ -27,10 +27,15 @@ const db = getFirestore(app);
 export function FirebaseProvider({ children }) {
   const rankingsCollection = collection(db, "rankings");
 
+  let rankings = null;
   const getRankings = async () => {
+    if (rankings) return rankings;
+    console.log("Getting rankings.");
     const rankingsSnapshot = await getDocs(rankingsCollection);
+    console.log("Rankings retrieved.");
     const rankingsList = rankingsSnapshot.docs.map((doc) => doc.data());
-    return rankingsList;
+    rankings = rankingsList;
+    return rankings;
   };
 
   const addRanking = async ({ name, time }) => {
@@ -42,22 +47,26 @@ export function FirebaseProvider({ children }) {
     }
   };
 
-  const getCharacterLocations = async () => {
+  const initializeCharacterLocations = async () => {
     const characterLocationsCollection = collection(db, "characterLocations");
-    console.log('getting locations');
+    console.log("getting locations");
     const characterLocationsSnapshot = await getDocs(
       characterLocationsCollection
     );
-    console.log('locations retrieved');
+    console.log("locations retrieved");
     const characterLocationsList = characterLocationsSnapshot.docs.map((doc) =>
       doc.data()
     );
     return characterLocationsList;
   };
 
+  const characterLocations = initializeCharacterLocations();
+
+  const getCharacterLocations = async () => await characterLocations;
+
   return (
     <FirebaseContext.Provider
-      value={{ getRankings, addRanking, useRankings, getCharacterLocations }}
+      value={{ getRankings, addRanking, getCharacterLocations }}
     >
       {children}
     </FirebaseContext.Provider>
