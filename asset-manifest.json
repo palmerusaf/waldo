@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/waldo/static/css/main.f55d5f0f.css",
+    "main.js": "/waldo/static/js/main.b647f2c4.js",
+    "static/media/waldo-canvas.jpg": "/waldo/static/media/waldo-canvas.c2104cb97432ea1afe61.jpg",
+    "static/media/large-loading.gif": "/waldo/static/media/large-loading.5ff638d076b1a83f2eb8.gif",
+    "static/media/woof.png": "/waldo/static/media/woof.f447d386cd614e560a20.png",
+    "static/media/wizard.png": "/waldo/static/media/wizard.d258eef9696f7154ff09.png",
+    "static/media/winda.png": "/waldo/static/media/winda.5870a245177652c3c354.png",
+    "static/media/odlaw.png": "/waldo/static/media/odlaw.58a5f1b4e00d8ddc253a.png",
+    "static/media/waldo.png": "/waldo/static/media/waldo.8c121097e72c8c0c9504.png",
+    "static/media/mag-glass.png": "/waldo/static/media/mag-glass.4a79d9a1f16df5c0cbe4.png",
+    "static/media/green-circle.png": "/waldo/static/media/green-circle.1db58ca1fca6ebcc335c.png",
+    "static/media/green-check-mark.png": "/waldo/static/media/green-check-mark.c9e8b7d92b88b082db95.png",
+    "index.html": "/waldo/index.html",
+    "main.f55d5f0f.css.map": "/waldo/static/css/main.f55d5f0f.css.map",
+    "main.b647f2c4.js.map": "/waldo/static/js/main.b647f2c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f55d5f0f.css",
+    "static/js/main.b647f2c4.js"
+  ]
+}
