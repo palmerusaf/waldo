@@ -26,7 +26,7 @@ export default function GameCanvas() {
   const clearCoordinates = () => setCoordinates(null);
 
   return (
-    <div className="flex relative z-0" onClick={handleClick} id="canvas">
+    <div className="relative z-0" onClick={handleClick} id="canvas">
       <img src={Canvas} alt="Waldo Canvas" />
       {coordinates && (
         <TargetingDisplay
