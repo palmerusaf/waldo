@@ -78,10 +78,12 @@ Where's Waldo game that uses React for frontend and Firebase for backend.
 ### Built With
 
 - [React.js](https://reactjs.org/)
+- [useContext Hook](https://reactjs.org/docs/context.html)
 - [Jest](https://jestjs.io/)
 - [Firebase](https://firebase.google.com/)
+- [Rules Unit Testing](https://www.npmjs.com/package/@firebase/rules-unit-testing)
 - [tailwindcss](https://tailwindcss.com/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/api/)
+- [Styled Components](https://styled-components.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,19 +95,18 @@ The purpose of this project is to gain experience working with backend as a serv
 
 ## Roadmap
 
-- [ ] Save coordinates of each character to database
-- [ ] Spawn target box with list of characters when user clicks photo
-  - [ ] De-spawn targeting marker
-- [ ] Validate if character selection and coordinates match database
-- [ ] Provide feedback message after selection
-- [ ] Place marker if selection is correct
-- [ ] Create timer that runs after image is loaded
-- [ ] Record username and score to database
-  - [ ] Don't allow player to enter name that has pattern anon####
-- [ ] Handle anonymous users by saving anon####
-- [ ] Get top 10 high score from database
-- [ ] Display top ten high with users ranking at bottom
-  - [ ] Add play again button at bottom of high score screen
+- [x] Save coordinates of each character to database
+- [x] Spawn target box with list of characters when user clicks photo
+  - [x] De-spawn targeting marker
+- [x] Validate if character selection and coordinates match database
+- [x] Provide feedback message after selection
+- [x] Place marker if selection is correct
+- [x] Create timer that runs after image is loaded
+- [x] Record username and score to database
+- [x] Get top 10 high score from database
+- [x] Display top ten high with users ranking at bottom
+- [x] Add database rules
+  - [x] Add tests for database rules
 
 See the [open issues](https://github.com/palmerusaf/waldo/issues) for a full list of proposed features (and known issues).
 
@@ -168,4 +169,4 @@ Project Link: [https://github.com/palmerusaf/waldo](https://github.com/palmerusa
 [license-url]: https://github.com/palmerusaf/waldo/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/branden-palmer-968765120
-[product-screenshot]: ./src/imgs/screen-shot.png
+[product-screenshot]: ./src/imgs/screen-shot.gif
