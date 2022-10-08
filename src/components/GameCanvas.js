@@ -26,7 +26,7 @@ export default function GameCanvas() {
   const clearCoordinates = () => setCoordinates(null);
 
   return (
-    <button className="flex relative z-0" onClick={handleClick} id="canvas">
+    <div className="flex relative z-0" onClick={handleClick} id="canvas">
       <img src={Canvas} alt="Waldo Canvas" />
       {coordinates && (
         <TargetingDisplay
@@ -35,7 +35,7 @@ export default function GameCanvas() {
         />
       )}
       <MarkedLocations />
-    </button>
+    </div>
   );
 }
 
