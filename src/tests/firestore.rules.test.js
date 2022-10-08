@@ -37,8 +37,8 @@ const getFirestore = async () => {
 
 const addTestData = async ({ testEnv, collectionName, testData }) => {
   let docId;
-  await testEnv.withSecurityRulesDisabled(async (e) => {
-    const db = await e.firestore();
+  await testEnv.withSecurityRulesDisabled(async (noRulesContext) => {
+    const db = await noRulesContext.firestore();
     const dbCollection = collection(db, collectionName);
     docId = await (await addDoc(dbCollection, testData)).id;
   });
@@ -85,6 +85,7 @@ const getCharacterLocations = async (db) => {
 afterAll(async () => {
   (await getTestEnv()).cleanup();
   (await getTestEnv()).clearFirestore();
+  await (await getTestEnv()).withSecurityRulesDisabled
 });
 
 describe("characterLocations Tests", () => {
@@ -190,7 +191,7 @@ describe("create rankings Tests", () => {
     await assertFails(addRanking({ name: " matt", time: 40 }, db));
     await assertFails(addRanking({ name: " m att", time: 40 }, db));
   });
-  it.skip("cannot create if name has cursing", async () => {
+  it("cannot create if name has cursing", async () => {
     const testEnv = await getTestEnv();
     const db = testEnv.unauthenticatedContext().firestore();
 
